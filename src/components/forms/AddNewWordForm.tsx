@@ -9,21 +9,27 @@ import {
   Center,
   Stack,
   Select,
-  Radio,
-  Container,
   Anchor,
 } from "@mantine/core";
 
 import { useForm } from "@mantine/form";
-import { useRouter } from "next/router";
-import { IWord } from "../../database/IWord";
 import { IWordClasses } from "../../database/IWordClasses";
 import wordClasses from "../../database/wordClasses.json";
+import axios from "axios";
+import {
+  setNavigationProgress,
+  startNavigationProgress,
+  resetNavigationProgress,
+} from "@mantine/nprogress";
+import { showNotification } from "@mantine/notifications";
+import { useScrollIntoView } from "@mantine/hooks";
 
-const courses = ["Curso1", "Curso2", "Curso3", "Curso4", "Curso5"];
 const defaultClass = Object.keys(wordClasses)[0] as keyof IWordClasses;
 
 export function AddNewWordForm() {
+  const { scrollIntoView, targetRef } = useScrollIntoView<HTMLDivElement>({
+    offset: 60,
+  });
   const form = useForm({
     initialValues: {
       pt: "",
@@ -33,16 +39,39 @@ export function AddNewWordForm() {
     },
     validate: {},
   });
-  const router = useRouter();
-  const handleSubmit = (values: typeof form.values) => {
-    console.log(values);
 
-    router.push("/criar-conta/foto-de-perfil");
+  const handleSubmit = async (values: typeof form.values) => {
+    resetNavigationProgress();
+    startNavigationProgress();
+    let { data } = await axios.post("/api/add-new-word", form.values);
+    setNavigationProgress(100);
+    console.log(data);
+    showNotification({
+      title: "Cadastro feito com sucesso.",
+      message: (
+        <>
+          Agora você pode visitar o &nbsp;
+          <Anchor<"a">
+            size="sm"
+            target="__blank"
+            href="https://portuguese-umbundo-dictionary.vercel.app/"
+          >
+            Tradutor Umbundo - Português
+          </Anchor>{" "}
+          e conferir por você mesmo a palavra cadastrada.
+        </>
+      ),
+      color: "green",
+    });
+
+    scrollIntoView({ alignment: "center" });
+    form.reset();
   };
 
   return (
     <Stack my={50}>
       <FormHeader />
+      <div ref={targetRef} />
       <Paper
         component="form"
         autoComplete="off"

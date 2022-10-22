@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import { MantineProvider, useMantineColorScheme } from "@mantine/core";
 import { GlobalStyles } from "../styles/GlobalStyles";
+import { NotificationsProvider } from "@mantine/notifications";
 
 interface MantineProviderInterface {
   Page: React.ReactNode;
@@ -21,7 +22,7 @@ export default function AppProvider({ Page }: MantineProviderInterface) {
       }}
     >
       <GlobalStyles mode={colorScheme} />
-      {Page}
+      <NotificationsProvider>{Page}</NotificationsProvider>
     </MantineProvider>
   );
 }

@@ -4,12 +4,15 @@ import Head from "next/head";
 import nookies from "nookies";
 import { AddNewWordForm } from "../components/forms/AddNewWordForm";
 
+import { NavigationProgress } from "@mantine/nprogress";
+
 export default function IndexPage() {
   return (
     <>
       <Head>
         <title>Gestor do tradutor Português - Umbundo</title>
       </Head>
+      <NavigationProgress />
       <Center sx={{ minHeight: "100vh" }}>
         <AddNewWordForm />
       </Center>
