@@ -16,6 +16,7 @@ import { useForm } from "@mantine/form";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { setCookie } from "nookies";
+import LinkTradutorUmbundo from "../LinkTradutorUmbundo";
 
 export function SignInForm() {
   const form = useForm({
@@ -102,18 +103,11 @@ function FormHeader() {
           fontWeight: 900,
         })}
       >
-        Mais para o Tradutor
+        Ajude-nos a Ajudar Angola
       </Title>
       <Text color="dimmed" size="sm" align="center" mt={5}>
         Sistema desenvolvido para disponibilizar uma interface gráfica para
-        adicionar palavras ao{" "}
-        <Anchor<"a">
-          size="sm"
-          target="__blank"
-          href="https://portuguese-umbundo-dictionary.vercel.app/"
-        >
-          Tradutor Umbundo - Português
-        </Anchor>
+        adicionar palavras ao <LinkTradutorUmbundo />
       </Text>
     </Box>
   );

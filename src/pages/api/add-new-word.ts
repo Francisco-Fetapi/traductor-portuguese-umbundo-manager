@@ -6,6 +6,7 @@ export type IResponseProps = {
   status: string;
   message: string;
   name: string;
+  data?: any;
 };
 
 export default async function handler(
@@ -23,5 +24,12 @@ export default async function handler(
       res(null);
     }, 1 * 1000);
   });
-  res.status(200).json({ status: "", message: "", name: cookies.name });
+  // res.status(200).json({ status: "success", message: "", name: cookies.name });
+  res
+    .status(200)
+    .json({
+      status: "",
+      message: "Esta palavra já existe.",
+      name: cookies.name,
+    });
 }

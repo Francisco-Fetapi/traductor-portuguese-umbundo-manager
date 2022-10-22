@@ -23,12 +23,14 @@ import {
 } from "@mantine/nprogress";
 import { showNotification } from "@mantine/notifications";
 import { useScrollIntoView } from "@mantine/hooks";
+import { IResponseProps } from "../../pages/api/add-new-word";
+import LinkTradutorUmbundo from "../LinkTradutorUmbundo";
 
 const defaultClass = Object.keys(wordClasses)[0] as keyof IWordClasses;
 
 export function AddNewWordForm() {
   const { scrollIntoView, targetRef } = useScrollIntoView<HTMLDivElement>({
-    offset: 60,
+    offset: 5,
   });
   const form = useForm({
     initialValues: {
@@ -37,41 +39,50 @@ export function AddNewWordForm() {
       class: defaultClass,
       examples: "",
     },
-    validate: {},
+    validate: {
+      examples(example) {
+        return null;
+      },
+    },
   });
 
   const handleSubmit = async (values: typeof form.values) => {
     resetNavigationProgress();
     startNavigationProgress();
-    let { data } = await axios.post("/api/add-new-word", form.values);
+    let { data } = await axios.post<IResponseProps>(
+      "/api/add-new-word",
+      form.values
+    );
     setNavigationProgress(100);
     console.log(data);
-    showNotification({
-      title: "Cadastro feito com sucesso.",
-      message: (
-        <>
-          Agora você pode visitar o &nbsp;
-          <Anchor<"a">
-            size="sm"
-            target="__blank"
-            href="https://portuguese-umbundo-dictionary.vercel.app/"
-          >
-            Tradutor Umbundo - Português
-          </Anchor>{" "}
-          e conferir por você mesmo a palavra cadastrada.
-        </>
-      ),
-      color: "green",
-    });
+    if (data.status === "success") {
+      showNotification({
+        title: "Cadastro feito com sucesso.",
+        message: (
+          <>
+            Agora você pode visitar o &nbsp;
+            <LinkTradutorUmbundo /> e conferir por você mesmo a palavra
+            cadastrada.
+          </>
+        ),
+        color: "green",
+      });
 
-    scrollIntoView({ alignment: "center" });
-    form.reset();
+      form.reset();
+    } else {
+      showNotification({
+        title: "Erro ao cadastrar.",
+        message: data.message,
+        color: "red",
+      });
+    }
+    scrollIntoView();
   };
 
   return (
     <Stack my={50}>
       <FormHeader />
-      <div ref={targetRef} />
+
       <Paper
         component="form"
         autoComplete="off"
@@ -82,6 +93,7 @@ export function AddNewWordForm() {
         radius="md"
         onSubmit={form.onSubmit(handleSubmit)}
       >
+        <div ref={targetRef} />
         <Stack style={{ flexDirection: "column" }}>
           <Title
             align="center"
@@ -154,15 +166,8 @@ function FormHeader() {
         Tradutor Umbundo
       </Title>
       <Text color="dimmed" size="sm" align="center" mt={5}>
-        Contribua com o projeto{" "}
-        <Anchor<"a">
-          size="sm"
-          target="__blank"
-          href="https://portuguese-umbundo-dictionary.vercel.app/"
-        >
-          Tradutor Umbundo - Português
-        </Anchor>{" "}
-        adicionando mais palavras a base de dados.
+        Contribua com o projeto <LinkTradutorUmbundo /> adicionando mais
+        palavras a base de dados.
       </Text>
     </Box>
   );
