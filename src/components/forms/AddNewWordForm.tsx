@@ -167,7 +167,7 @@ function FormHeader() {
       </Title>
       <Text color="dimmed" size="sm" align="center" mt={5}>
         Contribua com o projeto <LinkTradutorUmbundo /> adicionando mais
-        palavras a base de dados.
+        palavras na sua base de dados.
       </Text>
     </Box>
   );

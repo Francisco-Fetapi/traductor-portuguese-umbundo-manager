@@ -5,6 +5,7 @@ import nookies from "nookies";
 import { AddNewWordForm } from "../components/forms/AddNewWordForm";
 
 import { NavigationProgress } from "@mantine/nprogress";
+import { FooterSignin } from "../components/Footers";
 
 export default function IndexPage() {
   return (
@@ -16,6 +17,7 @@ export default function IndexPage() {
       <Center sx={{ minHeight: "100vh" }}>
         <AddNewWordForm />
       </Center>
+      <FooterSignin />
     </>
   );
 }

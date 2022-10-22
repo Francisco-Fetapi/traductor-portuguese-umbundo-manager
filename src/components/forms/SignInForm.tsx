@@ -13,6 +13,7 @@ import {
 } from "@mantine/core";
 
 import { useForm } from "@mantine/form";
+import { showNotification } from "@mantine/notifications";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { setCookie } from "nookies";
@@ -45,6 +46,12 @@ export function SignInForm() {
       maxAge: 12 * 30 * 24 * 60 * 60,
       path: "/",
     });
+    showNotification({
+      title: "Dados salvos.",
+      message:
+        "Das próximas vezes não será necessário reinserir as suas informações.",
+      color: "green",
+    });
     router.push("/");
   };
 
@@ -75,15 +82,16 @@ export function SignInForm() {
 
           <TextInput
             label="Nome"
-            placeholder="Primeiro e último nome"
+            placeholder="Seu primeiro e último nome"
             required
             {...form.getInputProps("name")}
           />
           <PasswordInput
             label="Chave de acesso"
-            placeholder="Confirmar permissão de acesso ao sistema"
+            placeholder="Código de acesso"
             required
             {...form.getInputProps("token")}
+            description="O token do sistema é uma sequencia de caracteres definido pelo criador do sistema que lhe permite ter acesso ao sistema. Sem ele você não poderá acessar o sistema."
           />
           <Center>
             <Button type="submit">Concluir</Button>

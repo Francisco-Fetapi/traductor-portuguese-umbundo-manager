@@ -5,13 +5,14 @@ import {
   ActionIcon,
   Group,
   Center,
+  Switch,
+  useMantineColorScheme,
+  useMantineTheme,
+  Tooltip,
 } from "@mantine/core";
-import {
-  IconBrandTwitter,
-  IconBrandYoutube,
-  IconBrandInstagram,
-} from "@tabler/icons";
+
 import { MantineLogo } from "@mantine/ds";
+import { IconDownload, IconSun, IconMoonStars } from "@tabler/icons";
 import LinkTradutorUmbundo from "./LinkTradutorUmbundo";
 
 const useStyles = createStyles((theme) => ({
@@ -118,6 +119,8 @@ const useStyles = createStyles((theme) => ({
 
 export function FooterSignin() {
   const { classes } = useStyles();
+  const { colorScheme, toggleColorScheme } = useMantineColorScheme();
+  const theme = useMantineTheme();
 
   return (
     <footer className={classes.footer}>
@@ -139,6 +142,35 @@ export function FooterSignin() {
         <Text color="dimmed" size="sm">
           © 2022 Todos os direitos reservados.
         </Text>
+        <Group spacing={12} className={classes.social} position="right" noWrap>
+          <Tooltip label="Alterar tema">
+            <ActionIcon
+              onClick={() => toggleColorScheme()}
+              size="lg"
+              sx={(theme) => ({
+                backgroundColor:
+                  theme.colorScheme === "dark"
+                    ? theme.colors.dark[6]
+                    : theme.colors.gray[0],
+                color:
+                  theme.colorScheme === "dark"
+                    ? theme.colors.yellow[4]
+                    : theme.colors.blue[6],
+              })}
+            >
+              {colorScheme === "dark" ? (
+                <IconSun size={20} />
+              ) : (
+                <IconMoonStars size={20} />
+              )}
+            </ActionIcon>
+          </Tooltip>
+          <Tooltip label="Baixar PDF Dicionário de Português - Umbundo">
+            <ActionIcon size="lg">
+              <IconDownload size={20} />
+            </ActionIcon>
+          </Tooltip>
+        </Group>
       </Container>
     </footer>
   );
