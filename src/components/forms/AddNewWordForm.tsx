@@ -130,6 +130,8 @@ export function AddNewWordForm() {
               sx={{
                 textTransform: "capitalize",
               }}
+              size="sm"
+              weight={300}
             >
               {wordClasses[form.values.class]}
             </Text>
@@ -139,7 +141,7 @@ export function AddNewWordForm() {
             <Textarea
               minRows={8}
               label="Exemplos"
-              placeholder={`Este campo não é obrigatório.\n\nCada exemplo deve estar no formato:\nFrase em portugues - Frase em Umbundo\n\nSepare os exemplos por quebra de linha. 
+              placeholder={`Este campo não é obrigatório.\n\nCada exemplo deve estar no formato:\nFrase em portugues - Frase em Umbundo\nFrase em portugues - Frase em Umbundo\n\nNOTA: Os exemplos devem ser separados por quebras de linha. 
               `}
               {...form.getInputProps("examples")}
             />
