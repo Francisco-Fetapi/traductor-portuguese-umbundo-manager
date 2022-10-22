@@ -5,13 +5,11 @@ import {
   ActionIcon,
   Group,
   Center,
-  Switch,
   useMantineColorScheme,
   useMantineTheme,
   Tooltip,
 } from "@mantine/core";
 
-import { MantineLogo } from "@mantine/ds";
 import { IconDownload, IconSun, IconMoonStars } from "@tabler/icons";
 import LinkTradutorUmbundo from "./LinkTradutorUmbundo";
 
