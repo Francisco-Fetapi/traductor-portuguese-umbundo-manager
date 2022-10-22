@@ -15,6 +15,7 @@ import {
 import { useForm } from "@mantine/form";
 import Link from "next/link";
 import { useRouter } from "next/router";
+import { setCookie } from "nookies";
 
 export function SignInForm() {
   const form = useForm({
@@ -39,6 +40,10 @@ export function SignInForm() {
   const router = useRouter();
   const handleSubmit = (values: typeof form.values) => {
     console.log(values);
+    setCookie(null, "name", values.name, {
+      maxAge: 12 * 30 * 24 * 60 * 60,
+      path: "/",
+    });
     router.push("/");
   };
 

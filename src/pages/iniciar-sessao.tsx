@@ -1,7 +1,9 @@
 import { Box, Center } from "@mantine/core";
+import { GetServerSideProps } from "next";
 import Head from "next/head";
 import React from "react";
 import { SignInForm } from "../components/forms/SignInForm";
+import nookies from "nookies";
 
 export default function SignInPage() {
   return (
@@ -17,3 +19,21 @@ export default function SignInPage() {
     </>
   );
 }
+
+export const getServerSideProps: GetServerSideProps = async (ctx) => {
+  const cookies = nookies.get(ctx);
+
+  if (cookies.name) {
+    return {
+      redirect: {
+        destination: "/",
+        statusCode: undefined,
+      },
+      props: {},
+    };
+  }
+
+  return {
+    props: {},
+  };
+};
