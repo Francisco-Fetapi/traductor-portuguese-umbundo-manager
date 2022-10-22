@@ -1,0 +1,15 @@
+{
+  "s.m": "substantivo masculino",
+  "s.f": "substantivo feminino",
+  "adj": "adjetivo",
+  "art.def": "artigo definido",
+  "art.ind": "artigo indefinido",
+  "num.ord": "numeral ordinal",
+  "num.card": "numeral cardinal",
+  "pron": "pronome",
+  "verb": "verbo",
+  "adv": "advérbio",
+  "conj": "conjunção",
+  "prep": "preposição",
+  "int": "interjeição"
+}

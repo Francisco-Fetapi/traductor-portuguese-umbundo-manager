@@ -2,6 +2,7 @@ import { Box, Center } from "@mantine/core";
 import { GetServerSideProps } from "next";
 import Head from "next/head";
 import nookies from "nookies";
+import { AddNewWordForm } from "../components/forms/AddNewWordForm";
 
 export default function IndexPage() {
   return (
@@ -10,7 +11,7 @@ export default function IndexPage() {
         <title>Gestor do tradutor Português - Umbundo</title>
       </Head>
       <Center sx={{ minHeight: "100vh" }}>
-        <Box style={{ width: "90%", maxWidth: 500 }}>Ola Mundo.</Box>
+        <AddNewWordForm />
       </Center>
     </>
   );
