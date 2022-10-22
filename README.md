@@ -1,0 +1,1 @@
+# Mantine Next Template
