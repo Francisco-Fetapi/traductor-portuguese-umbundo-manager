@@ -12,6 +12,8 @@ import {
 
 import { IconDownload, IconSun, IconMoonStars } from "@tabler/icons";
 import LinkTradutorUmbundo from "./LinkTradutorUmbundo";
+import { openConfirmModal } from "@mantine/modals";
+import { useRef } from "react";
 
 const useStyles = createStyles((theme) => ({
   footer: {
@@ -119,6 +121,32 @@ export function FooterSignin() {
   const { classes } = useStyles();
   const { colorScheme, toggleColorScheme } = useMantineColorScheme();
   const theme = useMantineTheme();
+  const linkDownloadRef = useRef<HTMLAnchorElement | null>(null);
+
+  const openModalDowloadPDF = () =>
+    openConfirmModal({
+      title: "Baixar Dicionário Português - Umbundo em PDF",
+      children: (
+        <Text size="sm">
+          Você está prestes a baixar o Dicionário Português - Umbundo, clica em
+          <b> confirmar</b> para começar o download.
+          <br />
+          <br />
+          O Dicionário servirá de referencia para preencher o formulário.
+          <br />
+          <br />
+          <b>
+            NOTA: O PDF tem um tamanho de <i>16MB</i>{" "}
+          </b>
+        </Text>
+      ),
+      labels: { confirm: "Confirmar", cancel: "Cancelar" },
+      onCancel: () => console.log("Cancel"),
+      onConfirm: () => {
+        console.log("Confirmed");
+        linkDownloadRef.current?.click();
+      },
+    });
 
   return (
     <footer className={classes.footer}>
@@ -128,6 +156,12 @@ export function FooterSignin() {
           margin: "0 auto",
         }}
       >
+        <a
+          href="https://github.com/Francisco-Fetapi/traductor-portuguese-umbundo-manager/raw/main/public/DICIONARIO%20PORTUGUES%20-%20UMBUNDO.pdf"
+          ref={linkDownloadRef}
+          style={{ display: "none" }}
+          target="__blank"
+        />
         <Text color="dimmed" size="sm" align="center">
           O <LinkTradutorUmbundo /> é um aplicativo utilizado para traduzir um
           texto entre os dois idiomas. Este é um sistema que provê os recursos
@@ -164,7 +198,7 @@ export function FooterSignin() {
             </ActionIcon>
           </Tooltip>
           <Tooltip label="Baixar PDF Dicionário de Português - Umbundo">
-            <ActionIcon size="lg">
+            <ActionIcon size="lg" onClick={openModalDowloadPDF}>
               <IconDownload size={20} />
             </ActionIcon>
           </Tooltip>
