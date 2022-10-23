@@ -4,7 +4,7 @@ import Head from "next/head";
 import React from "react";
 import { SignInForm } from "../components/forms/SignInForm";
 import nookies from "nookies";
-import { FooterSignin } from "../components/Footer";
+import { Footer } from "../components/Footer";
 
 export default function SignInPage() {
   return (
@@ -17,7 +17,7 @@ export default function SignInPage() {
           <SignInForm />
         </Box>
       </Center>
-      <FooterSignin />
+      <Footer />
     </>
   );
 }

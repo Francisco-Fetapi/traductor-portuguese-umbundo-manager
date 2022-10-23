@@ -11,9 +11,12 @@ import {
 } from "@mantine/core";
 
 import { IconDownload, IconSun, IconMoonStars } from "@tabler/icons";
+import { MdGroup } from "react-icons/md";
 import LinkTradutorUmbundo from "./LinkTradutorUmbundo";
 import { openConfirmModal } from "@mantine/modals";
 import { useRef } from "react";
+import Link from "next/link";
+import { useRouter } from "next/router";
 
 const useStyles = createStyles((theme) => ({
   footer: {
@@ -117,10 +120,10 @@ const useStyles = createStyles((theme) => ({
   },
 }));
 
-export function FooterSignin() {
+export function Footer() {
   const { classes } = useStyles();
   const { colorScheme, toggleColorScheme } = useMantineColorScheme();
-  const theme = useMantineTheme();
+  const router = useRouter();
   const linkDownloadRef = useRef<HTMLAnchorElement | null>(null);
 
   const openModalDowloadPDF = () =>
@@ -198,11 +201,21 @@ export function FooterSignin() {
               )}
             </ActionIcon>
           </Tooltip>
-          <Tooltip label="Baixar PDF Dicionário de Português - Umbundo">
+          <Tooltip label="Baixar Dicionário de Português - Umbundo em PDF">
             <ActionIcon size="lg" onClick={openModalDowloadPDF}>
               <IconDownload size={20} />
             </ActionIcon>
           </Tooltip>
+          {router.pathname === "/" && (
+            <Tooltip label="Contribuidores">
+              <ActionIcon
+                size="lg"
+                onClick={() => router.push("/contribuidores")}
+              >
+                <MdGroup size={20} />
+              </ActionIcon>
+            </Tooltip>
+          )}
         </Group>
       </Container>
     </footer>

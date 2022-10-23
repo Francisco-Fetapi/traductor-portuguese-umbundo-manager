@@ -1,21 +1,17 @@
-import { Box, Center } from "@mantine/core";
+import { Center } from "@mantine/core";
 import { GetServerSideProps } from "next";
 import Head from "next/head";
 import nookies from "nookies";
-import { AddNewWordForm } from "../components/forms/AddNewWordForm";
-
-import { NavigationProgress } from "@mantine/nprogress";
 import { Footer } from "../components/Footer";
 
 export default function IndexPage() {
   return (
     <>
       <Head>
-        <title>Gestor do tradutor Português - Umbundo</title>
+        <title>Gestor do tradutor Português - Umbundo - Contribuidores</title>
       </Head>
-      <NavigationProgress />
       <Center sx={{ minHeight: "100vh" }}>
-        <AddNewWordForm />
+        <h1>Contribuidores</h1>
       </Center>
       <Footer />
     </>
