@@ -132,7 +132,8 @@ export function FooterSignin() {
           <b> confirmar</b> para começar o download.
           <br />
           <br />
-          O Dicionário servirá de referencia para preencher o formulário.
+          O Dicionário servirá de referencia para preencher o formulário e
+          adicionar novas palavras ao <LinkTradutorUmbundo />.
           <br />
           <br />
           <b>
