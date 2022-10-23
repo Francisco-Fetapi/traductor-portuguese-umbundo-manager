@@ -8,4 +8,5 @@ interface FromPTtoUM {
 export interface IWord extends FromPTtoUM {
   class: keyof IWordClasses;
   examples: FromPTtoUM[];
+  author: string;
 }
