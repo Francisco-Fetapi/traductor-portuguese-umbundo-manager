@@ -25,6 +25,7 @@ import { showNotification } from "@mantine/notifications";
 import { useScrollIntoView } from "@mantine/hooks";
 import { IResponseProps } from "../../pages/api/add-new-word";
 import LinkTradutorUmbundo from "../LinkTradutorUmbundo";
+import { useState, useRef } from "react";
 
 const defaultClass = Object.keys(wordClasses)[0] as keyof IWordClasses;
 
@@ -32,6 +33,9 @@ export function AddNewWordForm() {
   const { scrollIntoView, targetRef } = useScrollIntoView<HTMLDivElement>({
     offset: 5,
   });
+  // const [formatedExamples, setFormatedExamples] = useState([]);
+  const formatedExamples = useRef<{ pt: string; um: string }[]>([]);
+
   const form = useForm({
     initialValues: {
       pt: "",
@@ -40,20 +44,49 @@ export function AddNewWordForm() {
       examples: "",
     },
     validate: {
-      examples(example) {
-        return null;
+      examples(examples) {
+        if (examples.trim().length === 0) {
+          return null;
+        }
+        const msgError = "O formato dos exemplos está incorreto.";
+        let listExamples = examples.split("\n");
+        listExamples = listExamples.filter((example) => {
+          return /\w+\s+-\s+\w\s*/.test(example);
+        });
+
+        if (listExamples.length === 0) {
+          return msgError;
+        }
+        const listExamplesPtUm = listExamples.map((example) => {
+          const [pt, um] = example.split(/\s+-\s+/);
+          return { pt, um };
+        });
+
+        let allRight = listExamplesPtUm.every((example) => {
+          return example.pt && example.um;
+        });
+        if (!allRight) {
+          return msgError;
+        }
+
+        formatedExamples.current = listExamplesPtUm;
       },
     },
   });
 
-  const handleSubmit = async (values: typeof form.values) => {
+  const handleSubmit = async (formValues: typeof form.values) => {
+    const values = {
+      ...formValues,
+      formatedExamples: formatedExamples.current,
+    };
     resetNavigationProgress();
     startNavigationProgress();
     let { data } = await axios.post<IResponseProps>(
       "/api/add-new-word",
-      form.values
+      values
     );
     setNavigationProgress(100);
+
     console.log(data);
     if (data.status === "success") {
       showNotification({
@@ -69,6 +102,7 @@ export function AddNewWordForm() {
       });
 
       form.reset();
+      formatedExamples.current = [];
     } else {
       showNotification({
         title: "Erro ao cadastrar.",
