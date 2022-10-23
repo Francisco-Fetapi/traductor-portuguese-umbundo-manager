@@ -5,7 +5,7 @@ import nookies from "nookies";
 import { AddNewWordForm } from "../components/forms/AddNewWordForm";
 
 import { NavigationProgress } from "@mantine/nprogress";
-import { FooterSignin } from "../components/Footers";
+import { FooterSignin } from "../components/Footer";
 
 export default function IndexPage() {
   return (
