@@ -109,6 +109,7 @@ export function AddNewWordForm() {
         message: data.message,
         color: "red",
       });
+      console.log(data.message);
     }
     scrollIntoView();
   };
