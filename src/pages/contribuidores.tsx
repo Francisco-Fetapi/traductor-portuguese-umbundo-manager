@@ -1,4 +1,4 @@
-import { Center } from "@mantine/core";
+import { Center, Text } from "@mantine/core";
 import { GetServerSideProps } from "next";
 import Head from "next/head";
 import nookies from "nookies";
@@ -10,8 +10,18 @@ export default function IndexPage() {
       <Head>
         <title>Gestor do tradutor Português - Umbundo - Contribuidores</title>
       </Head>
-      <Center sx={{ minHeight: "100vh" }}>
-        <h1>Contribuidores</h1>
+      <Center sx={{ minHeight: "80vh" }}>
+        <div>
+          <Text align="center" size="xl">
+            Página de Contribuidores
+          </Text>
+          <Text size="xs" align="center" color="dimmed">
+            Página em Desenvolvimento.
+          </Text>
+          <Text size="xs" align="center" color="dimmed">
+            Essa página se destinará a exibir uma tabela que fornecerá
+          </Text>
+        </div>
       </Center>
       <Footer />
     </>

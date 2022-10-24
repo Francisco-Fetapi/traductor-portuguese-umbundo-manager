@@ -9,4 +9,5 @@ export interface IWord<T = string> extends FromPTtoUM {
   class: keyof IWordClasses;
   examples: T;
   author: string;
+  date: string;
 }

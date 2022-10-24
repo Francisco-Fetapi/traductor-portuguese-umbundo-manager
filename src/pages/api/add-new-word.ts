@@ -17,30 +17,35 @@ export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse
 ) {
-  req.body.examples = req.body.formatedExamples;
-  delete req.body.formatedExamples;
-  const wordSent = req.body as IWord;
+  try {
+    req.body.examples = req.body.formatedExamples;
+    delete req.body.formatedExamples;
+    const wordSent = req.body as IWord;
+    wordSent.date = new Date().toString();
 
-  if (words.alreadyExists(wordSent.pt)) {
-    return res.json({
-      status: "error",
-      message: "A palvra que está tentando cadastrar já existe",
+    if (words.alreadyExists(wordSent.pt)) {
+      return res.json({
+        status: "error",
+        message: "A palvra que está tentando cadastrar já existe",
+      });
+    }
+
+    const cookies = nookies.get({ req });
+    wordSent.author = cookies.name;
+    const allWords = words.all();
+    allWords.unshift(wordSent);
+
+    const dataToSave = JSON.stringify(allWords, null, 2);
+
+    fs.writeFile("src/database/words.json", dataToSave, (err) => {
+      if (err) throw err;
+      console.log("Erro ao tentar salvar dados no arquivo words.json.");
     });
+
+    res
+      .status(200)
+      .json({ status: "success", message: "", name: cookies.name, wordSent });
+  } catch (e: any) {
+    res.status(200).json({ status: "error", message: e.message });
   }
-
-  const cookies = nookies.get({ req });
-  wordSent.author = cookies.name;
-  const allWords = words.all();
-  allWords.push(wordSent);
-
-  const dataToSave = JSON.stringify(allWords, null, 2);
-
-  fs.writeFile("src/database/words.json", dataToSave, (err) => {
-    if (err) throw err;
-    console.log("Erro ao tentar salvar dados no arquivo words.json.");
-  });
-
-  res
-    .status(200)
-    .json({ status: "success", message: "", name: cookies.name, wordSent });
 }
