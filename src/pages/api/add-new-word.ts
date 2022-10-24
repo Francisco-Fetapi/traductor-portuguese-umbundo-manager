@@ -4,6 +4,7 @@ import nookies from "nookies";
 import { IWord } from "../../database/IWord";
 import * as words from "../../helpers/Word";
 import fs from "fs";
+import path from "path";
 
 export type IResponseProps = {
   status: string;
@@ -37,10 +38,14 @@ export default async function handler(
 
     const dataToSave = JSON.stringify(allWords, null, 2);
 
-    fs.writeFile("src/database/words.json", dataToSave, (err) => {
-      if (err) throw err;
-      console.log("Erro ao tentar salvar dados no arquivo words.json.");
-    });
+    fs.writeFile(
+      path.resolve(__dirname, "src", "database", "words.json"),
+      dataToSave,
+      (err) => {
+        if (err) throw err;
+        console.log("Dados salvos no arquivo words.json.");
+      }
+    );
 
     res
       .status(200)
