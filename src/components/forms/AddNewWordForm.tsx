@@ -29,6 +29,8 @@ import { useState, useRef } from "react";
 
 const defaultClass = Object.keys(wordClasses)[0] as keyof IWordClasses;
 
+axios.defaults["headers"] = { "Access-Control-Allow-Origin": "*" };
+
 export function AddNewWordForm() {
   const { scrollIntoView, targetRef } = useScrollIntoView<HTMLDivElement>({
     offset: 5,
@@ -78,11 +80,12 @@ export function AddNewWordForm() {
     const values = {
       ...formValues,
       formatedExamples: formatedExamples.current,
+      author: "Teste",
     };
     resetNavigationProgress();
     startNavigationProgress();
     let { data } = await axios.post<IResponseProps>(
-      "/api/add-new-word",
+      "https://fake-database-portuguese-umbundo.vercel.app/api/words",
       values
     );
     setNavigationProgress(100);
