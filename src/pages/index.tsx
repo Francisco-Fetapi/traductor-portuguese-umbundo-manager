@@ -5,9 +5,23 @@ import nookies from "nookies";
 import { AddNewWordForm } from "../components/forms/AddNewWordForm";
 
 import { NavigationProgress } from "@mantine/nprogress";
+import { useCollection } from "react-firebase-hooks/firestore";
 import { Footer } from "../components/Footer";
+import { getWords, wordsCollection } from "../api-firebase";
+import { useEffect } from "react";
 
 export default function IndexPage() {
+  const [words, wordsLoading, wordsError] = useCollection(wordsCollection);
+  // useEffect(() => {
+  //   async function handleGetWords() {
+  //     let res = await getWords();
+  //     console.log(res);
+  //   }
+  //   handleGetWords();
+  // }, []);
+  if (!wordsLoading && words) {
+    words.docs.map((doc) => console.log(doc.data()));
+  }
   return (
     <>
       <Head>

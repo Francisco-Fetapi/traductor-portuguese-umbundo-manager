@@ -13,7 +13,6 @@
   "dependencies": {
     "@emotion/react": "^11.10.0",
     "@emotion/server": "^11.10.0",
-    "axios": "^0.21.1",
     "@emotion/styled": "^11.10.4",
     "@mantine/carousel": "^5.4.2",
     "@mantine/core": "5.1.0",
@@ -25,18 +24,22 @@
     "@mantine/nprogress": "^5.4.2",
     "@reduxjs/toolkit": "^1.8.5",
     "@tabler/icons": "^1.101.0",
+    "axios": "^0.21.1",
+    "firebase": "^9.12.1",
     "next": "12.2.4",
     "nookies": "^2.5.2",
     "react": "18.2.0",
     "react-dom": "18.2.0",
+    "react-firebase-hooks": "^5.0.3",
     "react-icons": "^4.4.0",
     "react-query": "^3.39.2",
     "react-redux": "^8.0.4",
     "redux": "^4.2.0",
-    "uuid": "^9.0.0",
-    "styled-components": "^5.3.6"
+    "styled-components": "^5.3.6",
+    "uuid": "^9.0.0"
   },
   "devDependencies": {
+    "@types/firebase": "^3.2.1",
     "@types/node": "18.6.4",
     "@types/react": "18.0.15",
     "@types/react-dom": "18.0.6",
