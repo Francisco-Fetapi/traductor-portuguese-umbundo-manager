@@ -23,9 +23,6 @@ export async function getWords() {
 }
 
 export async function setWord(word: IWord<FromPTtoUM[]>) {
-  // ver se ja existe, throw an error
-  // otherwise a generic error,show in console
-  // all ok
   const wordsCollection = collection(db, "words");
 
   const wordsRef = doc(wordsCollection);
