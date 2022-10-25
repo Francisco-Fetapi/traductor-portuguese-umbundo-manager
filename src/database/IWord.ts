@@ -1,6 +1,6 @@
 import type { IWordClasses } from "./IWordClasses";
 
-interface FromPTtoUM {
+export interface FromPTtoUM {
   pt: string;
   um: string;
 }

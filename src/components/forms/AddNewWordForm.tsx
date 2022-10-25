@@ -26,6 +26,9 @@ import { useScrollIntoView } from "@mantine/hooks";
 import { IResponseProps } from "../../pages/api/add-new-word";
 import LinkTradutorUmbundo from "../LinkTradutorUmbundo";
 import { useState, useRef } from "react";
+import { setWord } from "../../api-firebase";
+import { FromPTtoUM } from "../../database/IWord";
+import { parseCookies } from "nookies";
 
 const defaultClass = Object.keys(wordClasses)[0] as keyof IWordClasses;
 
@@ -36,7 +39,7 @@ export function AddNewWordForm() {
     offset: 5,
   });
   // const [formatedExamples, setFormatedExamples] = useState([]);
-  const formatedExamples = useRef<{ pt: string; um: string }[]>([]);
+  const formatedExamples = useRef<FromPTtoUM[]>([]);
 
   const form = useForm({
     initialValues: {
@@ -77,21 +80,21 @@ export function AddNewWordForm() {
   });
 
   const handleSubmit = async (formValues: typeof form.values) => {
+    const cookies = parseCookies();
     const values = {
-      ...formValues,
-      formatedExamples: formatedExamples.current,
-      author: "Teste",
+      pt: formValues.pt.toLowerCase(),
+      um: formValues.um.toLowerCase(),
+      class: formValues.class,
+      examples: formatedExamples.current,
+      author: cookies.name,
+      date: new Date().toString(),
     };
     resetNavigationProgress();
     startNavigationProgress();
-    let { data } = await axios.post<IResponseProps>(
-      "https://fake-database-portuguese-umbundo.vercel.app/api/words",
-      values
-    );
-    setNavigationProgress(100);
 
-    console.log(data);
-    if (data.status === "success") {
+    try {
+      await setWord(values);
+
       showNotification({
         title: "Cadastro feito com sucesso.",
         message: (
@@ -103,17 +106,18 @@ export function AddNewWordForm() {
         ),
         color: "green",
       });
-
       form.reset();
       formatedExamples.current = [];
-    } else {
+    } catch (e: any) {
       showNotification({
         title: "Erro ao cadastrar.",
-        message: data.message,
+        message: e.message,
         color: "red",
       });
-      console.log(data.message);
+      console.log(e.message);
     }
+
+    setNavigationProgress(100);
     scrollIntoView();
   };
 

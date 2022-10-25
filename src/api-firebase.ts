@@ -4,16 +4,38 @@ import {
   collection,
   getDocs,
   Firestore,
+  doc,
+  setDoc,
+  query,
+  where,
 } from "firebase/firestore";
+import { FromPTtoUM, IWord } from "./database/IWord";
 
 import firebaseConfig from "./firebase.json";
 
 export const app = initializeApp(firebaseConfig);
 export const db = getFirestore(app);
-export const wordsCollection = collection(db, "words");
 
 export async function getWords() {
-  const wordsSnapshot = await getDocs(wordsCollection);
+  const wordsSnapshot = await getDocs(collection(db, "words"));
   const wordsList = wordsSnapshot.docs.map((doc) => doc.data());
   return wordsList;
+}
+
+export async function setWord(word: IWord<FromPTtoUM[]>) {
+  // ver se ja existe, throw an error
+  // otherwise a generic error,show in console
+  // all ok
+  const wordsCollection = collection(db, "words");
+
+  const wordsRef = doc(wordsCollection);
+
+  let getSameWord = query(wordsCollection, where("pt", "==", word.pt));
+  const querySnapshot = await getDocs(getSameWord);
+
+  if (querySnapshot.size == 0) {
+    return await setDoc(wordsRef, word);
+  }
+
+  throw new Error("A palavra que está tentando cadastrar já existe!");
 }
