@@ -23,9 +23,8 @@ import {
 } from "@mantine/nprogress";
 import { showNotification } from "@mantine/notifications";
 import { useScrollIntoView } from "@mantine/hooks";
-import { IResponseProps } from "../../pages/api/add-new-word";
 import LinkTradutorUmbundo from "../LinkTradutorUmbundo";
-import { useState, useRef } from "react";
+import { useRef } from "react";
 import { setWord } from "../../api-firebase";
 import { FromPTtoUM } from "../../database/IWord";
 import { parseCookies } from "nookies";

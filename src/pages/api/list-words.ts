@@ -1,7 +1,10 @@
 import { NextApiRequest, NextApiResponse } from "next";
-import * as words from "../../helpers/Word";
+import { getWords } from "../../api-firebase";
 
-export default function ListWords(req: NextApiRequest, res: NextApiResponse) {
-  // Antes de dar um git push, copiar os dados dessa resposta.
-  return res.json({ words: words.all() });
+export default async function ListWords(
+  req: NextApiRequest,
+  res: NextApiResponse
+) {
+  const words = await getWords();
+  return res.json(words);
 }
