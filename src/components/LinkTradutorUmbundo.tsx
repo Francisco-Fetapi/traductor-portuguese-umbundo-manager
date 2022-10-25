@@ -5,7 +5,7 @@ export default function LinkTradutorUmbundo() {
     <Anchor<"a">
       size="sm"
       target="__blank"
-      href="https://portuguese-umbundo-dictionary.vercel.app/"
+      href="https://portuguese-umbundo-app.vercel.app"
     >
       Tradutor Português - Umbundo
     </Anchor>
