@@ -11,6 +11,7 @@ import {
   TableContribuitions,
   TableContribuitionsProps,
 } from "../components/TableContrubuitions";
+import { redirectNoLogin } from "../helpers/redirectNoLogin";
 import useDatabase from "../hooks/useDatabase";
 
 export default function Contribuidores() {
@@ -67,20 +68,4 @@ export default function Contribuidores() {
   );
 }
 
-export const getServerSideProps: GetServerSideProps = async (ctx) => {
-  const cookies = nookies.get(ctx);
-
-  if (!cookies.name) {
-    return {
-      redirect: {
-        destination: "/iniciar-sessao",
-        statusCode: undefined,
-      },
-      props: {},
-    };
-  }
-
-  return {
-    props: {},
-  };
-};
+export const getServerSideProps: GetServerSideProps = redirectNoLogin;

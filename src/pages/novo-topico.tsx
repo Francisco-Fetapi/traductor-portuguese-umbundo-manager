@@ -1,8 +1,10 @@
 import { Center } from "@mantine/core";
 import { NavigationProgress } from "@mantine/nprogress";
+import { GetServerSideProps } from "next";
 import Head from "next/head";
 import React from "react";
 import { Footer } from "../components/Footer";
+import { redirectNoLogin } from "../helpers/redirectNoLogin";
 
 export default function NewTopciPage() {
   return (
@@ -18,3 +20,5 @@ export default function NewTopciPage() {
     </>
   );
 }
+
+export const getServerSideProps: GetServerSideProps = redirectNoLogin;
