@@ -2,62 +2,60 @@ import { Box, Center, Text } from "@mantine/core";
 import { GetServerSideProps } from "next";
 import Head from "next/head";
 import nookies from "nookies";
+import { useMemo } from "react";
 import { Footer } from "../components/Footer";
-import { TableContribuitions } from "../components/TableContrubuitions";
-import DatabaseProvider from "../context/DatabaseProvider";
+import {
+  TableContribuitions,
+  TableContribuitionsProps,
+} from "../components/TableContrubuitions";
+import useDatabase from "../hooks/useDatabase";
 
 export default function Contribuidores() {
+  const {
+    words,
+    getAuthors,
+    getAuthorPercentByWordsAdded,
+    getWordsAddedByAuthor,
+    getLastUpdateByAuthor,
+  } = useDatabase();
+  const tableData = useMemo(() => {
+    const data: TableContribuitionsProps["data"] = [];
+    console.log(getAuthors());
+    getAuthors().forEach((author) => {
+      data.push({
+        author: author,
+        lastModified: getLastUpdateByAuthor(author)!,
+        numWords: getWordsAddedByAuthor(author),
+        reviews: getAuthorPercentByWordsAdded(author),
+      });
+    });
+    console.log("tabel data", data);
+    return data;
+  }, [words]);
+
   return (
     <>
       <Head>
         <title>Gestor do tradutor Português - Umbundo - Contribuidores</title>
       </Head>
-      <DatabaseProvider>
-        <Center sx={{ minHeight: "80vh" }}>
-          <div>
-            <Text align="center" size="xl">
-              Contribuidores
+
+      <Center sx={{ minHeight: "80vh" }}>
+        <div>
+          <Text align="center" size="xl">
+            Contribuidores
+          </Text>
+
+          <Box mt={20}>
+            <TableContribuitions data={tableData} />
+          </Box>
+
+          <Box mt={20}>
+            <Text size="sm" align="center" color="dimmed">
+              Total de palavras: <b>{words?.length}</b>
             </Text>
-
-            <Box mt={20}>
-              <TableContribuitions
-                data={[
-                  {
-                    author: "Francisco Fetapi",
-                    lastModified: "12/02/2022",
-                    numWords: 1,
-                    reviews: { negative: 25, positive: 75 },
-                  },
-                  {
-                    author: "Felipe Carlos",
-                    lastModified: "12/02/2022",
-                    numWords: 12,
-                    reviews: { negative: 60, positive: 40 },
-                  },
-                  {
-                    author: "Micael Andrande",
-                    lastModified: "12/02/2022",
-                    numWords: 12,
-                    reviews: { negative: 60, positive: 40 },
-                  },
-                  {
-                    author: "Maria Rangel",
-                    lastModified: "12/02/2022",
-                    numWords: 12,
-                    reviews: { negative: 60, positive: 40 },
-                  },
-                ]}
-              />
-            </Box>
-
-            <Box mt={20}>
-              <Text size="sm" align="center" color="dimmed">
-                Total de palavras: <b>12</b>
-              </Text>
-            </Box>
-          </div>
-        </Center>
-      </DatabaseProvider>
+          </Box>
+        </div>
+      </Center>
       <Footer />
     </>
   );

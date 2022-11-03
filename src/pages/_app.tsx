@@ -13,6 +13,7 @@ import {
 } from "../store/App.store";
 import { useEffect } from "react";
 import useStatePersist from "../hooks/useStatePersist";
+import DatabaseProvider from "../context/DatabaseProvider";
 
 export default function App(props: AppProps) {
   const { Component, pageProps } = props;
@@ -34,7 +35,9 @@ export default function App(props: AppProps) {
 
       <AppStore>
         <ColorSchemeContainer>
-          <AppProvider Page={<Component {...pageProps} />} />
+          <DatabaseProvider>
+            <AppProvider Page={<Component {...pageProps} />} />
+          </DatabaseProvider>
         </ColorSchemeContainer>
       </AppStore>
     </>

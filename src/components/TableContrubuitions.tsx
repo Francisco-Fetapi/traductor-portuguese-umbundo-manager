@@ -19,7 +19,7 @@ const useStyles = createStyles((theme) => ({
   },
 }));
 
-interface TableReviewsProps {
+export interface TableContribuitionsProps {
   data: {
     author: string;
     numWords: number;
@@ -28,11 +28,8 @@ interface TableReviewsProps {
   }[];
 }
 
-export function TableContribuitions({ data }: TableReviewsProps) {
+export function TableContribuitions({ data }: TableContribuitionsProps) {
   const { classes, theme } = useStyles();
-  const { test } = useDatabase();
-
-  test();
 
   const rows = data.map((row, position) => {
     const totalReviews = row.reviews.negative + row.reviews.positive;
