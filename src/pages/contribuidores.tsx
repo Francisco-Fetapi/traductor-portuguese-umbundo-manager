@@ -3,6 +3,7 @@ import { GetServerSideProps } from "next";
 import Head from "next/head";
 import nookies from "nookies";
 import { Footer } from "../components/Footer";
+import { TableContribuitions } from "../components/TableContrubuitions";
 
 export default function IndexPage() {
   return (
@@ -21,6 +22,35 @@ export default function IndexPage() {
           <Text size="xs" align="center" color="dimmed">
             Essa página se destinará a exibir uma tabela que fornecerá
           </Text>
+
+          <TableContribuitions
+            data={[
+              {
+                author: "Francisco Fetapi",
+                lastModified: "12/02/2022",
+                numWords: 1,
+                reviews: { negative: 25, positive: 75 },
+              },
+              {
+                author: "Felipe Carlos",
+                lastModified: "12/02/2022",
+                numWords: 12,
+                reviews: { negative: 60, positive: 40 },
+              },
+              {
+                author: "Micael Andrande",
+                lastModified: "12/02/2022",
+                numWords: 12,
+                reviews: { negative: 60, positive: 40 },
+              },
+              {
+                author: "Maria Rangel",
+                lastModified: "12/02/2022",
+                numWords: 12,
+                reviews: { negative: 60, positive: 40 },
+              },
+            ]}
+          />
         </div>
       </Center>
       <Footer />
