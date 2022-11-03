@@ -1,6 +1,8 @@
-import { Box, Center, Text } from "@mantine/core";
+import { Anchor, Box, Center, Text } from "@mantine/core";
+import { IconArrowLeft } from "@tabler/icons";
 import { GetServerSideProps } from "next";
 import Head from "next/head";
+import Link from "next/link";
 import nookies from "nookies";
 import { useMemo } from "react";
 import { Footer } from "../components/Footer";
@@ -53,6 +55,20 @@ export default function Contribuidores() {
             <Text size="sm" align="center" color="dimmed">
               Total de palavras: <b>{words?.length}</b>
             </Text>
+          </Box>
+          <Box mt={20}>
+            <Link href="/">
+              <Anchor<"a"> color="dimmed" size="sm">
+                <Center inline>
+                  <IconArrowLeft size={12} stroke={1.5} />
+                  <Box ml={5}>
+                    <Text size="sm" align="center">
+                      Pagina principal
+                    </Text>
+                  </Box>
+                </Center>
+              </Anchor>
+            </Link>
           </Box>
         </div>
       </Center>
