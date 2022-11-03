@@ -2,15 +2,16 @@ import { createContext, useEffect, useState } from "react";
 import { FromPTtoUM, IWord } from "../database/IWord";
 import wordsJson from "../database/words.json";
 
-type IWords = IWord<FromPTtoUM[]>[];
+export type IWords = IWord<FromPTtoUM[]>[];
 
 interface IDatabaseContext {
   words: IWords;
+  conversations: string[];
 }
 
 export const DatabaseContext = createContext<Partial<IDatabaseContext>>({});
 
-interface DatabaseProviderProps {
+export interface DatabaseProviderProps {
   children: React.ReactNode;
 }
 

@@ -13,7 +13,17 @@ import {
 } from "../store/App.store";
 import { useEffect } from "react";
 import useStatePersist from "../hooks/useStatePersist";
-import DatabaseProvider from "../context/DatabaseProvider";
+import LocalDatabaseProvider from "../context/DatabaseProvider";
+import FirebaseProvider from "../context/FireBaseProvider";
+
+const databases = {
+  development: LocalDatabaseProvider,
+  production: FirebaseProvider,
+  test: LocalDatabaseProvider,
+};
+
+const environment = process.env.NODE_ENV;
+const DatabaseProvider = databases[environment];
 
 export default function App(props: AppProps) {
   const { Component, pageProps } = props;
