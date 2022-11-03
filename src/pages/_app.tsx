@@ -15,6 +15,7 @@ import { useEffect } from "react";
 import useStatePersist from "../hooks/useStatePersist";
 import LocalDatabaseProvider from "../context/DatabaseProvider";
 import FirebaseProvider from "../context/FireBaseProvider";
+import SimpleNavigation from "../components/SimpleNavigation";
 
 const databases = {
   development: LocalDatabaseProvider,
@@ -46,6 +47,7 @@ export default function App(props: AppProps) {
       <AppStore>
         <ColorSchemeContainer>
           <DatabaseProvider>
+            <SimpleNavigation />
             <AppProvider Page={<Component {...pageProps} />} />
           </DatabaseProvider>
         </ColorSchemeContainer>

@@ -5,6 +5,7 @@ import Head from "next/head";
 import Link from "next/link";
 import nookies from "nookies";
 import { useMemo } from "react";
+import BackLinkButton from "../components/BackLinkButton";
 import { Footer } from "../components/Footer";
 import {
   TableContribuitions,
@@ -57,18 +58,7 @@ export default function Contribuidores() {
             </Text>
           </Box>
           <Box mt={20}>
-            <Link href="/">
-              <Anchor<"a"> color="dimmed" size="sm">
-                <Center inline>
-                  <IconArrowLeft size={12} stroke={1.5} />
-                  <Box ml={5}>
-                    <Text size="sm" align="center">
-                      Pagina principal
-                    </Text>
-                  </Box>
-                </Center>
-              </Anchor>
-            </Link>
+            <BackLinkButton />
           </Box>
         </div>
       </Center>

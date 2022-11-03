@@ -10,6 +10,8 @@ import {
   Stack,
   Select,
   Anchor,
+  Group,
+  Breadcrumbs,
 } from "@mantine/core";
 
 import { useForm } from "@mantine/form";
@@ -28,6 +30,9 @@ import { useRef } from "react";
 import { setWord } from "../../api-firebase";
 import { FromPTtoUM } from "../../database/IWord";
 import { parseCookies } from "nookies";
+import Link from "next/link";
+import { useRouter } from "next/router";
+import SimpleNavigation from "../SimpleNavigation";
 
 const defaultClass = Object.keys(wordClasses)[0] as keyof IWordClasses;
 
