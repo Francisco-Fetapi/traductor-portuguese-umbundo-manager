@@ -1,5 +1,6 @@
 import { useContext } from "react";
 import { DatabaseContext } from "../context/DatabaseProvider";
+import wordClasses from "../database/wordClasses.json";
 
 export default function useDatabase() {
   const { words } = useContext(DatabaseContext);
@@ -15,6 +16,9 @@ export default function useDatabase() {
 
   const data = {
     words,
+    getClass(wordClass: keyof typeof wordClasses) {
+      return wordClasses[wordClass];
+    },
     getAuthors() {
       const authors: string[] = [];
       data.orderByDate(words)?.forEach((word) => {

@@ -1,9 +1,10 @@
-import { Center } from "@mantine/core";
+import { Box, Center, Text } from "@mantine/core";
 import { NavigationProgress } from "@mantine/nprogress";
 import { GetServerSideProps } from "next";
 import Head from "next/head";
 import React from "react";
 import { Footer } from "../components/Footer";
+import { TableWords } from "../components/TableWords";
 import { redirectNoLogin } from "../helpers/redirectNoLogin";
 
 export default function WordsListPage() {
@@ -14,7 +15,15 @@ export default function WordsListPage() {
       </Head>
       <NavigationProgress />
       <Center sx={{ minHeight: "100vh" }}>
-        <h1>Ola Mundo</h1>
+        <div>
+          <Text align="center" size="xl">
+            Lista de Palavras
+          </Text>
+
+          <Box mt={20}>
+            <TableWords />
+          </Box>
+        </div>
       </Center>
       <Footer />
     </>
