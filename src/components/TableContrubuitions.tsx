@@ -7,6 +7,7 @@ import {
   Group,
   ScrollArea,
 } from "@mantine/core";
+import useDatabase from "../hooks/useDatabase";
 
 const useStyles = createStyles((theme) => ({
   progressBar: {
@@ -29,6 +30,9 @@ interface TableReviewsProps {
 
 export function TableContribuitions({ data }: TableReviewsProps) {
   const { classes, theme } = useStyles();
+  const { test } = useDatabase();
+
+  test();
 
   const rows = data.map((row, position) => {
     const totalReviews = row.reviews.negative + row.reviews.positive;
