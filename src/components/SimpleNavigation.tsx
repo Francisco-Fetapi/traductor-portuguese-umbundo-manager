@@ -8,10 +8,10 @@ export default function SimpleNavigation() {
     <Center my={5}>
       <Breadcrumbs>
         <PageLink href="/">Nova Palavra</PageLink>
-        <PageLink href="/contribuidores">Contribuidores</PageLink>
-        <PageLink href="/novo-topico">Novo Tópico</PageLink>
-        <PageLink href="/lista-de-topicos">Lista de Tópicos</PageLink>
         <PageLink href="/lista-de-palavras">Lista de palavras</PageLink>
+        <PageLink href="/lista-de-topicos">Lista de Tópicos</PageLink>
+        <PageLink href="/contribuidores">Contribuidores</PageLink>
+        {/* <PageLink href="/novo-topico">Novo Tópico</PageLink> */}
       </Breadcrumbs>
     </Center>
   );
