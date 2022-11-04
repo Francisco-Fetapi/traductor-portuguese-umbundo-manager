@@ -9,18 +9,24 @@ const useStyles = createStyles((theme) => ({
       }`,
     },
   },
+  forTd: {
+    whiteSpace: "nowrap",
+    overflow: "hidden",
+    textOverflow: "ellipsis",
+    maxWidth: 180,
+  },
 }));
 
 export function TableWords() {
   const { classes, theme } = useStyles();
-  const { words, orderByDate } = useDatabase();
+  const { words, orderByWord } = useDatabase();
 
-  const rows = orderByDate(words)?.map((word, position) => {
+  const rows = orderByWord(words)?.map((word, position) => {
     return (
       <tr key={word.author}>
         <td>{position + 1}</td>
-        <td>{word.pt}</td>
-        <td>{word.um}</td>
+        <td className={classes.forTd}>{word.pt}</td>
+        <td className={classes.forTd}>{word.um}</td>
         <td>
           <Anchor<"a"> size="sm" onClick={(event) => event.preventDefault()}>
             {word.author}
