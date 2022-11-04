@@ -33,8 +33,15 @@ export default function Contribuidores() {
         reviews: getAuthorPercentByWordsAdded(author),
       });
     });
-    console.log("tabel data", data);
-    return data;
+    const dataSorted = data.sort((a, b) => {
+      if (a.numWords > b.numWords) return -1;
+      if (a.numWords < b.numWords) return 1;
+      return 0;
+    });
+
+    console.log("sorted", dataSorted);
+
+    return dataSorted;
   }, [words]);
 
   return (

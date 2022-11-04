@@ -7,7 +7,6 @@ import {
   Group,
   ScrollArea,
 } from "@mantine/core";
-import useDatabase from "../hooks/useDatabase";
 
 const useStyles = createStyles((theme) => ({
   progressBar: {
