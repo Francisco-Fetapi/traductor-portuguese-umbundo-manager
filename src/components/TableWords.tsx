@@ -13,7 +13,7 @@ const useStyles = createStyles((theme) => ({
 
 export function TableWords() {
   const { classes, theme } = useStyles();
-  const { words, getClass, orderByDate } = useDatabase();
+  const { words, orderByDate } = useDatabase();
 
   const rows = orderByDate(words)?.map((word, position) => {
     return (
