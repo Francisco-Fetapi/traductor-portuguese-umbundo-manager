@@ -23,7 +23,7 @@ export function TableWords() {
 
   const rows = orderByWord(words)?.map((word, position) => {
     return (
-      <tr key={word.author}>
+      <tr key={word.pt}>
         <td>{position + 1}</td>
         <td className={classes.forTd}>{word.pt}</td>
         <td className={classes.forTd}>{word.um}</td>

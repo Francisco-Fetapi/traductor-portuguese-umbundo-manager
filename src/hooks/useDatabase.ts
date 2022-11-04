@@ -1,6 +1,8 @@
 import { useContext } from "react";
 import { DatabaseContext } from "../context/DatabaseProvider";
 import wordClasses from "../database/wordClasses.json";
+import ptLocale from "date-fns/locale/pt";
+import { formatDistance } from "date-fns";
 
 export default function useDatabase() {
   const { words } = useContext(DatabaseContext);
@@ -38,7 +40,12 @@ export default function useDatabase() {
       }
 
       const wordsWithDate = data.orderByDate(wordsByAuthor);
-      return wordsWithDate[0].date.toLocaleString();
+      // return wordsWithDate[0].date.toLocaleString();
+
+      const distance = formatDistance(new Date(), wordsWithDate[0].date, {
+        locale: ptLocale,
+      });
+      return `há ${distance}`;
     },
     orderByDate(listWords: IWords) {
       const wordsWithDate = listWords?.map((word) => {
