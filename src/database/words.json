@@ -1,34 +1,738 @@
 [
   {
-    "pt": "Nos",
-    "um": "OlaMundo",
-    "class": "s.m",
     "examples": [],
-    "date": "Mon Oct 24 2022 11:35:33 GMT+0100 (Horário Padrão da África Ocidental)",
+    "pt": "campo",
+    "date": "Thu Nov 03 2022 12:44:13 GMT+0100 (Hora padrão da África Ocidental)",
+    "um": "epia, etapi, ocila, usenge",
+    "author": "Simão Vasco",
+    "class": "s.m"
+  },
+  {
+    "pt": "obrigado",
+    "um": "twapandula",
+    "class": "s.m",
+    "date": "Tue Oct 25 2022 10:30:18 GMT+0100 (Hora padrão da África Ocidental)",
+    "examples": [],
     "author": "Francisco Fetapi"
   },
   {
-    "pt": "Eu",
-    "um": "Ame",
+    "pt": "abacate ",
     "class": "s.m",
     "examples": [],
-    "date": "Mon Oct 24 2022 11:34:39 GMT+0100 (Horário Padrão da África Ocidental)",
+    "um": "ekuakuati; epako lio ambakate; epako lialeñela ndetila.",
+    "date": "Thu Nov 03 2022 09:50:31 GMT+0100 (Hora padrão da África Ocidental)",
+    "author": "Leodivaldo Passagem"
+  },
+  {
+    "examples": [],
+    "author": "Francisco Fetapi",
+    "class": "s.m",
+    "pt": "hoje",
+    "date": "Tue Oct 25 2022 10:50:07 GMT+0100 (Hora padrão da África Ocidental)",
+    "um": "etali"
+  },
+  {
+    "class": "s.f",
+    "date": "Thu Nov 03 2022 10:40:04 GMT+0100 (Hora padrão da África Ocidental)",
+    "examples": [],
+    "um": "esalalo; esivilo; elau; uwale; ulamba; esengo; eliwewo; epuiti; esupoko; ocisipo; ondungi; ocindondo.",
+    "author": "Leodivaldo Passagem",
+    "pt": "abastança 1 "
+  },
+  {
+    "class": "s.m",
+    "author": "Simão Vasco",
+    "examples": [],
+    "um": "ukuaku yula, onjuli, ukuaku toyulla",
+    "pt": "campeão",
+    "date": "Thu Nov 03 2022 12:23:59 GMT+0100 (Hora padrão da África Ocidental)"
+  },
+  {
+    "pt": "eu",
+    "examples": [],
+    "date": "Tue Oct 25 2022 10:37:07 GMT+0100 (Hora padrão da África Ocidental)",
+    "class": "pron",
+    "um": "ame",
     "author": "Francisco Fetapi"
   },
   {
-    "pt": "Obrigado",
-    "um": "Twapandula",
-    "class": "s.m",
-    "examples": [],
-    "date": "Mon Oct 24 2022 11:55:39 GMT+0100 (Horário Padrão da África Ocidental)",
-    "author": "Felipe Andrade"
+    "class": "pron",
+    "date": "Tue Oct 25 2022 12:28:11 GMT+0100 (Hora padrão da África Ocidental)",
+    "pt": "nós",
+    "author": "Francisco Fetapi",
+    "um": "etu",
+    "examples": []
   },
   {
-    "pt": "Teste",
-    "um": "Teste em umbundo",
+    "author": "Leodivaldo Passagem",
+    "class": "adj",
+    "pt": "abandonável ",
+    "examples": [],
+    "date": "Thu Nov 03 2022 10:21:22 GMT+0100 (Hora padrão da África Ocidental)",
+    "um": " capukuiwa; cipukuiwa; cisiwa; cayandulukiwa; ciyandulukiwa."
+  },
+  {
+    "date": "Thu Nov 03 2022 10:26:32 GMT+0100 (Hora padrão da África Ocidental)",
+    "pt": "abantesma",
+    "examples": [],
+    "um": " ociliangu; ocilülu; ocinganji; ekisikisi.",
+    "class": "s.m",
+    "author": "Leodivaldo Passagem"
+  },
+  {
+    "pt": "campanha",
+    "class": "s.f",
+    "author": "Simão Vasco",
+    "date": "Thu Nov 03 2022 12:22:30 GMT+0100 (Hora padrão da África Ocidental)",
+    "examples": [],
+    "um": "ocilombo casualali, ovita, upange wa- [sualali"
+  },
+  {
+    "class": "s.m",
+    "um": "ondando yombongo yofeka yimue, la [yikuavo, omilu-yolombongo",
+    "date": "Thu Nov 03 2022 12:12:19 GMT+0100 (Hora padrão da África Ocidental)",
+    "author": "Simão Vasco",
+    "examples": [],
+    "pt": "câmbio"
+  },
+  {
+    "date": "Thu Nov 03 2022 12:10:21 GMT+0100 (Hora padrão da África Ocidental)",
+    "author": "Simão Vasco",
+    "pt": "cambaio",
+    "examples": [],
+    "um": "ukuavolu apenga",
+    "class": "adj"
+  },
+  {
+    "um": "caseñenyua; cituñunya; ciseñenya; capungiwa.",
+    "pt": "abanado ",
+    "author": "Leodivaldo Passagem",
+    "class": "adj",
+    "examples": [],
+    "date": "Thu Nov 03 2022 10:12:49 GMT+0100 (Hora padrão da África Ocidental)"
+  },
+  {
+    "examples": [],
+    "author": "Simão Vasco",
+    "date": "Thu Nov 03 2022 12:44:41 GMT+0100 (Hora padrão da África Ocidental)",
+    "class": "s.f",
+    "pt": "cana",
+    "um": "omuenge, omusati, oluneva"
+  },
+  {
+    "class": "s.f",
+    "date": "Thu Nov 03 2022 12:24:56 GMT+0100 (Hora padrão da África Ocidental)",
+    "author": "Simão Vasco",
+    "examples": [],
+    "pt": "campina",
+    "um": "enyala"
+  },
+  {
+    "class": "s.f",
+    "um": "ula, chama",
+    "date": "Thu Nov 03 2022 12:07:46 GMT+0100 (Hora padrão da África Ocidental)",
+    "examples": [],
+    "author": "Simão Vasco",
+    "pt": "cama"
+  },
+  {
+    "examples": [],
+    "pt": "abandalhamento ",
+    "date": "Thu Nov 03 2022 10:15:18 GMT+0100 (Hora padrão da África Ocidental)",
+    "class": "s.f",
+    "um": " esepu; upuku; etombiwo; esawu; etuka; elavisuo; epembuiwo; elaviso; etondaliwo; epenyiwo. embu; epenyo; undevi; elalulo; evalulo; esavulo; etondalo.",
+    "author": "Leodivaldo Passagem"
+  },
+  {
+    "author": "Leodivaldo Passagem",
+    "date": "Thu Nov 03 2022 09:45:22 GMT+0100 (Hora padrão da África Ocidental)",
+    "examples": [],
+    "class": "adv",
+    "pt": "à revelia",
+    "um": "ukahuiyu; uhuiyu; okutila kekanga; uhumbi;"
+  },
+  {
+    "pt": "abanação ",
+    "um": " eseñenyo; ocituñunyo; useñenyo; epungiwo. ocituñunyo; epungiwo.",
+    "author": "Leodivaldo Passagem",
+    "class": "s.f",
+    "date": "Thu Nov 03 2022 10:12:15 GMT+0100 (Hora padrão da África Ocidental)",
+    "examples": []
+  },
+  {
+    "examples": [],
+    "date": "Thu Nov 03 2022 12:26:55 GMT+0100 (Hora padrão da África Ocidental)",
+    "class": "s.f",
+    "um": "ocisungo",
+    "author": "Simão Vasco",
+    "pt": "canção"
+  },
+  {
+    "class": "s.m",
+    "author": "Simão Vasco",
+    "pt": "caminho",
+    "examples": [],
+    "um": "onjila, olila, otapalalo",
+    "date": "Thu Nov 03 2022 12:13:54 GMT+0100 (Hora padrão da África Ocidental)"
+  },
+  {
+    "examples": [],
+    "author": "Simão Vasco",
+    "pt": "caber",
+    "class": "verb",
+    "date": "Thu Nov 03 2022 12:03:31 GMT+0100 (Hora padrão da África Ocidental)",
+    "um": "oku sua, soka"
+  },
+  {
+    "pt": " abalado ",
+    "um": "cakomoha; cayondovala; casungiwa; catuñunyiwa.",
+    "author": "Leodivaldo Passagem",
+    "class": "adj",
+    "date": "Thu Nov 03 2022 10:08:41 GMT+0100 (Hora padrão da África Ocidental)",
+    "examples": []
+  },
+  {
+    "date": "Thu Nov 03 2022 09:51:16 GMT+0100 (Hora padrão da África Ocidental)",
+    "class": "s.m",
+    "pt": "abacateiro ",
+    "author": "Leodivaldo Passagem",
+    "examples": [],
+    "um": "uti wolo ambakate; uti wima olo ambakate."
+  },
+  {
+    "author": "Leodivaldo Passagem",
+    "date": "Thu Nov 03 2022 10:19:20 GMT+0100 (Hora padrão da África Ocidental)",
+    "class": "adj",
+    "examples": [],
+    "um": " ocisiwe; osiwe; osie; casiwa; ca siala ulika; elunda; epia, onjo,uwalo, ovinyama viasiwa okuti muele wa fa pamue wa iluka.",
+    "pt": "abandonado 6"
+  },
+  {
+    "date": "Thu Nov 03 2022 12:00:46 GMT+0100 (Hora padrão da África Ocidental)",
+    "um": "utue",
+    "class": "s.f",
+    "pt": "cabeça",
+    "examples": [],
+    "author": "Simão Vasco"
+  },
+  {
+    "pt": "cantar",
+    "author": "Simão Vasco",
+    "date": "Thu Nov 03 2022 12:47:57 GMT+0100 (Hora padrão da África Ocidental)",
+    "examples": [],
+    "class": "verb",
+    "um": "oku imba"
+  },
+  {
+    "examples": [],
+    "pt": "abafação ",
+    "class": "s.f",
+    "date": "Thu Nov 03 2022 10:05:53 GMT+0100 (Hora padrão da África Ocidental)",
+    "um": "etutuiyo; okututuiya; etimbuiyo; ekandangiyo; etetuiyo; evindiliko; evindiko; etateko; etateka; ehanja; etalu; etangamiso; epipiliko; etalulo; ekatanga; etatamiso.",
+    "author": "Leodivaldo Passagem"
+  },
+  {
+    "examples": [],
+    "class": "s.f",
+    "date": "Thu Nov 03 2022 10:14:41 GMT+0100 (Hora padrão da África Ocidental)",
+    "author": "Leodivaldo Passagem",
+    "pt": "abandalhação ",
+    "um": " esepu; elavisuo; etombiwo; upuku; etuka; esawu; epembuiwo; elaviso; etondaliwo; epenyiwo. embu; epenyo; undevi; elalulo; evalulo; esavulo; etondalo."
+  },
+  {
+    "um": "ohombo yomange",
+    "date": "Thu Nov 03 2022 12:07:03 GMT+0100 (Hora padrão da África Ocidental)",
+    "author": "Simão Vasco",
+    "class": "s.f",
+    "pt": "cabra",
+    "examples": []
+  },
+  {
+    "um": "catopa; cavulua; cayuyua; calenda.",
+    "examples": [],
+    "author": "Leodivaldo Passagem",
+    "pt": "abananado ",
+    "date": "Thu Nov 03 2022 10:13:17 GMT+0100 (Hora padrão da África Ocidental)",
+    "class": "adj"
+  },
+  {
+    "pt": "abano ",
+    "class": "s.m",
+    "author": "Leodivaldo Passagem",
+    "um": "ekumuho; ocipekuilo; etuñunyo.",
+    "date": "Thu Nov 03 2022 10:22:23 GMT+0100 (Hora padrão da África Ocidental)",
+    "examples": []
+  },
+  {
+    "date": "Thu Nov 03 2022 12:20:50 GMT+0100 (Hora padrão da África Ocidental)",
+    "examples": [],
+    "class": "s.f",
+    "author": "Simão Vasco",
+    "pt": "campainha",
+    "um": "ongenjo"
+  },
+  {
+    "pt": "abandonado 3 ",
+    "class": "adj",
+    "author": "Leodivaldo Passagem",
+    "examples": [],
+    "date": "Thu Nov 03 2022 10:17:29 GMT+0100 (Hora padrão da África Ocidental)",
+    "um": " capuako; calimba; cayandulukiwa; cakunguiwa; casiwa; canyehuiwa; capembuiwa; caivaliwa."
+  },
+  {
+    "author": "Simão Vasco",
+    "pt": "ódio",
+    "date": "Thu Oct 27 2022 10:26:31 GMT+0100 (Hora padrão da África Ocidental)",
+    "um": "onha",
+    "class": "s.m",
+    "examples": []
+  },
+  {
+    "author": "Simão Vasco",
+    "um": "olekua yoku pitisa ovava pamue owato",
+    "pt": "canal",
+    "class": "s.m",
+    "date": "Thu Nov 03 2022 12:46:14 GMT+0100 (Hora padrão da África Ocidental)",
+    "examples": []
+  },
+  {
+    "class": "adv",
+    "date": "Thu Nov 03 2022 11:59:05 GMT+0100 (Hora padrão da África Ocidental)",
+    "pt": "cá",
+    "author": "Simão Vasco",
+    "examples": [],
+    "um": "kulo, palo, mulo"
+  },
+  {
+    "examples": [],
+    "pt": "abacá ",
+    "date": "Thu Nov 03 2022 10:01:40 GMT+0100 (Hora padrão da África Ocidental)",
+    "author": "Leodivaldo Passagem",
+    "um": "ahondio o ko filipina.",
+    "class": "s.f"
+  },
+  {
+    "author": "Leodivaldo Passagem",
+    "pt": "à ",
+    "examples": [],
+    "class": "prep. e pron",
+    "um": " toke; ko; ka; ke; ki; ci; li; yi; kocindeti; ocituke lo.",
+    "date": "Thu Nov 03 2022 09:30:24 GMT+0100 (Hora padrão da África Ocidental)"
+  },
+  {
+    "date": "Thu Nov 03 2022 10:10:20 GMT+0100 (Hora padrão da África Ocidental)",
+    "class": "adj",
+    "pt": "abalável ",
+    "author": "Leodivaldo Passagem",
+    "um": "calulumisua; casakalasua; catangamisua.",
+    "examples": []
+  },
+  {
+    "pt": "abaixamento ",
+    "class": "s.m",
+    "author": "Leodivaldo Passagem",
+    "date": "Thu Nov 03 2022 09:58:34 GMT+0100 (Hora padrão da África Ocidental)",
+    "examples": [],
+    "um": "esivato; ewula; esiavatato; evula; evando; etapiko; epumahalo; evuto."
+  },
+  {
+    "um": "ocisola",
+    "examples": [],
+    "author": "Simão Vasco",
+    "class": "s.m",
+    "date": "Thu Oct 27 2022 10:25:24 GMT+0100 (Hora padrão da África Ocidental)",
+    "pt": "amor"
+  },
+  {
+    "um": "ociliangu; ocilülu; ocinganji; ekisikisi.",
+    "pt": "abantesma",
+    "author": "Leodivaldo Passagem",
+    "examples": [],
+    "date": "Thu Nov 03 2022 10:22:48 GMT+0100 (Hora padrão da África Ocidental)",
+    "class": "s.m"
+  },
+  {
+    "um": "caivaliwa; casiwa; capuako; calimba; cayandulukiwa; canyehuiwa; capembuiwa; cakunguiwa.",
+    "pt": "abandonado 1",
+    "author": "Leodivaldo Passagem",
+    "examples": [],
+    "date": "Thu Nov 03 2022 10:16:02 GMT+0100 (Hora padrão da África Ocidental)",
+    "class": "adj"
+  },
+  {
+    "um": "ombenje, onganja",
+    "pt": "cabaça",
+    "author": "Simão Vasco",
+    "date": "Thu Nov 03 2022 11:59:45 GMT+0100 (Hora padrão da África Ocidental)",
+    "class": "s.f",
+    "examples": []
+  },
+  {
+    "author": "Simão Vasco",
+    "examples": [],
+    "um": "cciñonya, ocifuko, esinga",
+    "pt": "cabelo",
+    "class": "s.m",
+    "date": "Thu Nov 03 2022 12:01:31 GMT+0100 (Hora padrão da África Ocidental)"
+  },
+  {
+    "class": "s.m",
+    "um": "endingo, onali",
+    "pt": "canário",
+    "date": "Thu Nov 03 2022 12:25:22 GMT+0100 (Hora padrão da África Ocidental)",
+    "examples": [],
+    "author": "Simão Vasco"
+  },
+  {
+    "date": "Thu Nov 03 2022 12:12:50 GMT+0100 (Hora padrão da África Ocidental)",
+    "author": "Simão Vasco",
+    "examples": [],
+    "um": "eleñailo",
+    "pt": "camaleão",
+    "class": "s.m"
+  },
+  {
+    "date": "Thu Nov 03 2022 12:47:18 GMT+0100 (Hora padrão da África Ocidental)",
+    "pt": "cansar",
+    "examples": [],
+    "um": "oku kavisa, kuma",
+    "class": "verb",
+    "author": "Simão Vasco"
+  },
+  {
+    "author": "Leodivaldo Passagem",
+    "examples": [],
+    "pt": "abacinamento",
+    "class": "s.m",
+    "um": "etekaviso; etekavelo; ewuvalo.",
+    "date": "Thu Nov 03 2022 09:54:49 GMT+0100 (Hora padrão da África Ocidental)"
+  },
+  {
+    "class": "s.f",
+    "examples": [],
+    "pt": "aba 1 ",
+    "date": "Thu Nov 03 2022 09:48:06 GMT+0100 (Hora padrão da África Ocidental)",
+    "author": "Leodivaldo Passagem",
+    "um": "tate; isia; ungombo; onjali yomanu; ocitunda."
+  },
+  {
+    "um": "ocikundo, ofiyu, upi, osungu yongongo [yiñila vokalunga",
+    "pt": "cabo",
+    "date": "Thu Nov 03 2022 12:05:41 GMT+0100 (Hora padrão da África Ocidental)",
+    "author": "Simão Vasco",
+    "class": "s.m",
+    "examples": []
+  },
+  {
+    "class": "s.f",
+    "author": "Simão Vasco",
+    "pt": "cabana",
+    "date": "Thu Nov 03 2022 12:00:15 GMT+0100 (Hora padrão da África Ocidental)",
+    "um": "onjo yaño, (osinge)",
+    "examples": []
+  },
+  {
+    "pt": "abandono ",
+    "um": " ekunguilo; epukulo; umumbe; eyanduluko, upukuopukuo; uliakanjele.",
+    "author": "Leodivaldo Passagem",
+    "date": "Thu Nov 03 2022 10:21:55 GMT+0100 (Hora padrão da África Ocidental)",
+    "class": "s.m",
+    "examples": []
+  },
+  {
+    "um": "ukuepili",
+    "date": "Thu Nov 03 2022 12:43:47 GMT+0100 (Hora padrão da África Ocidental)",
+    "pt": "canhoto",
+    "author": "Simão Vasco",
+    "examples": [],
+    "class": "adj"
+  },
+  {
+    "date": "Thu Nov 03 2022 09:32:44 GMT+0100 (Hora padrão da África Ocidental)",
+    "class": "prep",
+    "pt": "a despeito de ",
+    "examples": [],
+    "um": "lopo; handi; handipo; haimo; kuenda; haimo lumue; haimo muele; lopo handi; ndaño oco.",
+    "author": "Leodivaldo Passagem"
+  },
+  {
+    "author": "Simão Vasco",
+    "examples": [],
+    "um": "ombinja",
+    "pt": "camisa",
+    "date": "Thu Nov 03 2022 12:19:48 GMT+0100 (Hora padrão da África Ocidental)",
+    "class": "s.f"
+  },
+  {
     "class": "s.m",
     "examples": [],
-    "date": "Thu Nov 03 2022 10:19:25 GMT+0100 (Hora padrão da África Ocidental)",
-    "author": "Outra Pessoa"
+    "um": "onanasi; epako lisõsa kuenda lineha ciwa.",
+    "date": "Thu Nov 03 2022 09:54:08 GMT+0100 (Hora padrão da África Ocidental)",
+    "author": "Leodivaldo Passagem",
+    "pt": "abacaxi "
+  },
+  {
+    "author": "Leodivaldo Passagem",
+    "examples": [],
+    "date": "Thu Nov 03 2022 09:55:56 GMT+0100 (Hora padrão da África Ocidental)",
+    "class": "s.m",
+    "um": "okuiva ovinyama; okunyana ovinyama.",
+    "pt": "abacto "
+  },
+  {
+    "class": "s.f",
+    "author": "Simão Vasco",
+    "pt": "câmara",
+    "examples": [],
+    "um": "chondo pamue onjango yovikunji vielombe",
+    "date": "Thu Nov 03 2022 12:08:41 GMT+0100 (Hora padrão da África Ocidental)"
+  },
+  {
+    "um": "demons. cimosi; omunu umue; umue; umuamue; cimue; haico; haeye; calisoka; calisetahala.",
+    "pt": " a mesma  ",
+    "class": "pron",
+    "examples": [],
+    "date": "Thu Nov 03 2022 10:00:19 GMT+0100 (Hora padrão da África Ocidental)",
+    "author": "Leodivaldo Passagem"
+  },
+  {
+    "examples": [],
+    "author": "Leodivaldo Passagem",
+    "class": "adj",
+    "pt": "abado ",
+    "um": " ceci ci kuete ovinemba pamue ocinemba.",
+    "date": "Thu Nov 03 2022 10:04:24 GMT+0100 (Hora padrão da África Ocidental)"
+  },
+  {
+    "pt": "abanão ",
+    "author": "Leodivaldo Passagem",
+    "examples": [],
+    "class": "s.m",
+    "um": "eseñenyo; ocituñunyo; useñenyo; epungiwo.",
+    "date": "Thu Nov 03 2022 10:13:37 GMT+0100 (Hora padrão da África Ocidental)"
+  },
+  {
+    "author": "Leodivaldo Passagem",
+    "examples": [],
+    "um": "katanya; onduko yomunu; osiwe yonjali yulume osimbu ka citiwile handi; okapulungu ku isia; ombinda.",
+    "pt": "abandonado pela morte do pai antes de nascer ",
+    "class": "adj",
+    "date": "Thu Nov 03 2022 10:20:04 GMT+0100 (Hora padrão da África Ocidental)"
+  },
+  {
+    "class": "adj",
+    "date": "Thu Nov 03 2022 10:16:48 GMT+0100 (Hora padrão da África Ocidental)",
+    "examples": [],
+    "um": " calimba; casiwa; cayandulukiwa; capuako; canyehuiwa; capembuiwa; caivaliwa; cakunguiwa.",
+    "pt": "abandonado 2",
+    "author": "Leodivaldo Passagem"
+  },
+  {
+    "examples": [],
+    "pt": "abalada ",
+    "class": "s.f",
+    "date": "Thu Nov 03 2022 10:07:57 GMT+0100 (Hora padrão da África Ocidental)",
+    "um": "evotoko; eyaluko; okuenda; okuyanguka.",
+    "author": "Leodivaldo Passagem"
+  },
+  {
+    "um": "adj. ca lipua, ci yela calua",
+    "date": "Thu Nov 03 2022 12:40:52 GMT+0100 (Hora padrão da África Ocidental)",
+    "examples": [],
+    "class": "adj",
+    "author": "Simão Vasco",
+    "pt": "cândido"
+  },
+  {
+    "um": "ocilulumo; ocilulumu; ondindimo; ocitetemo; elulumiso; ocituñunyu.",
+    "examples": [],
+    "pt": "abalamento ",
+    "author": "Leodivaldo Passagem",
+    "date": "Thu Nov 03 2022 10:09:15 GMT+0100 (Hora padrão da África Ocidental)",
+    "class": "s.m"
+  },
+  {
+    "date": "Thu Nov 03 2022 12:42:45 GMT+0100 (Hora padrão da África Ocidental)",
+    "class": "s.m",
+    "examples": [],
+    "author": "Simão Vasco",
+    "pt": "candeeiro",
+    "um": "okandiyelo, ondiyelo"
+  },
+  {
+    "um": "ukuetu",
+    "date": "Thu Nov 03 2022 12:09:42 GMT+0100 (Hora padrão da África Ocidental)",
+    "class": "s.m",
+    "examples": [],
+    "pt": "camarada",
+    "author": "Simão Vasco"
+  },
+  {
+    "class": "s.f",
+    "pt": "abafa ",
+    "um": "ondaka yusongui; ondaka ya kapitango.",
+    "examples": [],
+    "author": "Leodivaldo Passagem",
+    "date": "Thu Nov 03 2022 10:05:02 GMT+0100 (Hora padrão da África Ocidental)"
+  },
+  {
+    "date": "Thu Nov 03 2022 12:29:30 GMT+0100 (Hora padrão da África Ocidental)",
+    "class": "s.f",
+    "examples": [],
+    "pt": "cancela",
+    "um": "epito liongualala",
+    "author": "Simão Vasco"
+  },
+  {
+    "author": "Leodivaldo Passagem",
+    "class": "s.f",
+    "pt": "a coisa mais desejada ",
+    "date": "Thu Nov 03 2022 09:31:31 GMT+0100 (Hora padrão da África Ocidental)",
+    "um": "ocinofila; ceci o fila; ceci ci soliwe calua.",
+    "examples": []
+  },
+  {
+    "class": "verb",
+    "author": "Simão Vasco",
+    "date": "Thu Nov 03 2022 12:30:11 GMT+0100 (Hora padrão da África Ocidental)",
+    "examples": [],
+    "um": "oku yika",
+    "pt": "cancelar"
+  },
+  {
+    "author": "Leodivaldo Passagem",
+    "examples": [],
+    "date": "Thu Nov 03 2022 10:02:38 GMT+0100 (Hora padrão da África Ocidental)",
+    "pt": "abáculo ",
+    "class": "adj",
+    "um": "ceci ci kasi litayo, kuenda onguya yi ilika ukomo pamue owuya wetimba pamue utunga."
+  },
+  {
+    "pt": "cambiar, ",
+    "author": "Simão Vasco",
+    "class": "verb",
+    "um": "aku tolokala olombongo violeka yimue la [yikuavo",
+    "date": "Thu Nov 03 2022 12:11:16 GMT+0100 (Hora padrão da África Ocidental)",
+    "examples": []
+  },
+  {
+    "class": "s.m",
+    "author": "Leodivaldo Passagem",
+    "pt": "abade ",
+    "examples": [],
+    "um": "usongui unene wolo patele. vo mosteiro.",
+    "date": "Thu Nov 03 2022 09:56:35 GMT+0100 (Hora padrão da África Ocidental)"
+  },
+  {
+    "date": "Thu Nov 03 2022 09:34:03 GMT+0100 (Hora padrão da África Ocidental)",
+    "pt": "à parte ",
+    "author": "Leodivaldo Passagem",
+    "examples": [],
+    "um": "konele; kombandu; konepa; kohonga; koko; kongenge; konele yaci mue.",
+    "class": "prep"
+  },
+  {
+    "examples": [],
+    "class": "s.f",
+    "um": " ocimbimbi; ocinemba conjo; ocindumba conjo; ocinjevo conjo.",
+    "author": "Leodivaldo Passagem",
+    "pt": "aba da casa ",
+    "date": "Thu Nov 03 2022 10:01:02 GMT+0100 (Hora padrão da África Ocidental)"
+  },
+  {
+    "examples": [],
+    "um": "ocivela cututu",
+    "author": "Simão Vasco",
+    "date": "Thu Nov 03 2022 12:46:48 GMT+0100 (Hora padrão da África Ocidental)",
+    "pt": "cano",
+    "class": "s.m"
+  },
+  {
+    "examples": [],
+    "author": "Leodivaldo Passagem",
+    "pt": "abalo",
+    "date": "Thu Nov 03 2022 10:10:56 GMT+0100 (Hora padrão da África Ocidental)",
+    "class": "s.m",
+    "um": " ocilulumo; ocilulumu; ondindimo; ocitetemo; elulumiso; ocituñunyu."
+  },
+  {
+    "author": "Leodivaldo Passagem",
+    "pt": "abactor ",
+    "class": "s.m",
+    "um": "ocimunu; okaminyo; ukuakunyana ovinyama; ohumbi.",
+    "examples": [],
+    "date": "Thu Nov 03 2022 09:55:27 GMT+0100 (Hora padrão da África Ocidental)"
+  },
+  {
+    "um": "oku enda ungenda woposi",
+    "author": "Simão Vasco",
+    "date": "Thu Nov 03 2022 12:13:25 GMT+0100 (Hora padrão da África Ocidental)",
+    "class": "verb",
+    "examples": [],
+    "pt": "caminhar"
+  },
+  {
+    "date": "Thu Nov 03 2022 09:58:05 GMT+0100 (Hora padrão da África Ocidental)",
+    "examples": [],
+    "class": "s.m",
+    "author": "Leodivaldo Passagem",
+    "um": "onguyu; ocikole; omekese yilialia ovikete; eteta liovikete; ocimbiangulu. ",
+    "pt": "abaisir "
+  },
+  {
+    "examples": [],
+    "um": " cimbapo; onduko yomunu yi tukula okañunuñunu kovutima pamue ocinja cïvi; onduko yasende. (cimbapo copeka; cokutima catila).",
+    "class": "adj",
+    "date": "Thu Nov 03 2022 10:18:04 GMT+0100 (Hora padrão da África Ocidental)",
+    "pt": "abandonado 4 ",
+    "author": "Leodivaldo Passagem"
+  },
+  {
+    "pt": "à queima-roupa",
+    "class": "adv",
+    "date": "Thu Nov 03 2022 09:36:49 GMT+0100 (Hora padrão da África Ocidental)",
+    "author": "Leodivaldo Passagem",
+    "examples": [],
+    "um": " ekuasumulo; ekasuluila; eyokela; ekuaumuila; oku linga cimue lonjanga pamue onukungila pamue ocitukulukila pamue ocipikipiki; oku ponda lokanyanyu; eyayula. (iputavombia, ombelela kakala)."
+  },
+  {
+    "date": "Thu Nov 03 2022 10:18:43 GMT+0100 (Hora padrão da África Ocidental)",
+    "class": "adj",
+    "pt": "abandonado 5 ",
+    "examples": [],
+    "author": "Leodivaldo Passagem",
+    "um": " elunda; imbo lia ilukiwa; ombala yasiwa; asialalunda; osi yimbo yavolelua; ocikala."
+  },
+  {
+    "date": "Thu Nov 03 2022 12:43:16 GMT+0100 (Hora padrão da África Ocidental)",
+    "examples": [],
+    "pt": "candor",
+    "um": "onjelo ya lua, oku lipua",
+    "class": "s.m",
+    "author": "Simão Vasco"
+  },
+  {
+    "date": "Tue Oct 25 2022 12:27:21 GMT+0100 (Hora padrão da África Ocidental)",
+    "author": "Francisco Fetapi",
+    "examples": [],
+    "um": "onduku",
+    "pt": "nome",
+    "class": "s.m"
+  },
+  {
+    "pt": "aba 2 ",
+    "um": " ongoyo; ocinemba; esusu; ocinduva; esulilo; olumbuambua; oweyelo.",
+    "date": "Thu Nov 03 2022 09:49:58 GMT+0100 (Hora padrão da África Ocidental)",
+    "examples": [],
+    "class": "s.m",
+    "author": "Leodivaldo Passagem"
+  },
+  {
+    "class": "adj",
+    "um": "caleñela luiti; ciyueta; cifuita; caleñela luiti; cimbombosia; cafikua; caviuka; caviuha.",
+    "date": "Thu Nov 03 2022 10:11:36 GMT+0100 (Hora padrão da África Ocidental)",
+    "pt": "abalofado ",
+    "examples": [],
+    "author": "Leodivaldo Passagem"
   }
 ]
