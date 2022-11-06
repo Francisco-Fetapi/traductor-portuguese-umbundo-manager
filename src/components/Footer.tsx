@@ -6,17 +6,13 @@ import {
   Group,
   Center,
   useMantineColorScheme,
-  useMantineTheme,
   Tooltip,
 } from "@mantine/core";
 
 import { IconDownload, IconSun, IconMoonStars } from "@tabler/icons";
-import { MdGroup } from "react-icons/md";
 import LinkTradutorUmbundo from "./LinkTradutorUmbundo";
 import { openConfirmModal } from "@mantine/modals";
 import { useRef } from "react";
-import Link from "next/link";
-import { useRouter } from "next/router";
 
 const useStyles = createStyles((theme) => ({
   footer: {
@@ -123,7 +119,6 @@ const useStyles = createStyles((theme) => ({
 export function Footer() {
   const { classes } = useStyles();
   const { colorScheme, toggleColorScheme } = useMantineColorScheme();
-  const router = useRouter();
   const linkDownloadRef = useRef<HTMLAnchorElement | null>(null);
 
   const openModalDowloadPDF = () =>
@@ -206,16 +201,6 @@ export function Footer() {
               <IconDownload size={20} />
             </ActionIcon>
           </Tooltip>
-          {router.pathname === "/" && (
-            <Tooltip label="Contribuidores">
-              <ActionIcon
-                size="lg"
-                onClick={() => router.push("/contribuidores")}
-              >
-                <MdGroup size={20} />
-              </ActionIcon>
-            </Tooltip>
-          )}
         </Group>
       </Container>
     </footer>
