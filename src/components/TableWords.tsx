@@ -1,5 +1,12 @@
-import { createStyles, Table, Anchor, ScrollArea } from "@mantine/core";
+import {
+  createStyles,
+  Table,
+  Anchor,
+  ScrollArea,
+  ActionIcon,
+} from "@mantine/core";
 import useDatabase from "../hooks/useDatabase";
+import TableWordRow from "./TableWordRow";
 
 const useStyles = createStyles((theme) => ({
   progressBar: {
@@ -22,23 +29,7 @@ export function TableWords() {
   const { words, orderByWord } = useDatabase();
 
   const rows = orderByWord(words)?.map((word, position) => {
-    return (
-      <tr key={word.pt}>
-        <td>{position + 1}</td>
-        <td className={classes.forTd}>{word.pt}</td>
-        <td className={classes.forTd}>{word.um}</td>
-        <td>
-          <Anchor<"a"> size="sm" onClick={(event) => event.preventDefault()}>
-            {word.author}
-          </Anchor>
-        </td>
-
-        {/* <td>
-          <abbr title={getClass(word.class)}>{word.class}</abbr>
-        </td>
-        <td>{new Date(word.date).toLocaleDateString()}</td> */}
-      </tr>
-    );
+    return <TableWordRow key={position} word={word} position={position} />;
   });
 
   return (
@@ -53,9 +44,7 @@ export function TableWords() {
             <th></th>
             <th>Português</th>
             <th>Umbundo</th>
-            <th>Autor</th>
-            {/* <th>Classe</th>
-            <th>Adicionada</th> */}
+            <th>Ações</th>
           </tr>
         </thead>
         <tbody>{rows}</tbody>
