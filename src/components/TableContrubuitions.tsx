@@ -85,7 +85,7 @@ export function TableContribuitions({ data }: TableContribuitionsProps) {
       <Table verticalSpacing="xs">
         <thead>
           <tr>
-            <th>Posição</th>
+            <th></th>
             <th>Autor</th>
             <th>Última atualização</th>
             <th>Adicionou</th>
