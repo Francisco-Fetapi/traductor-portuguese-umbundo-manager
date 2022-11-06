@@ -9,30 +9,19 @@ import {
   Center,
   Stack,
   Select,
-  Anchor,
-  Group,
-  Breadcrumbs,
 } from "@mantine/core";
 
 import { useForm } from "@mantine/form";
 import { IWordClasses } from "../../database/IWordClasses";
 import wordClasses from "../../database/wordClasses.json";
 import axios from "axios";
-import {
-  setNavigationProgress,
-  startNavigationProgress,
-  resetNavigationProgress,
-} from "@mantine/nprogress";
 import { showNotification } from "@mantine/notifications";
 import { useScrollIntoView } from "@mantine/hooks";
 import LinkTradutorUmbundo from "../LinkTradutorUmbundo";
-import { useRef } from "react";
+import { useRef, useState } from "react";
 import { setWord } from "../../api-firebase";
 import { FromPTtoUM } from "../../database/IWord";
 import { parseCookies } from "nookies";
-import Link from "next/link";
-import { useRouter } from "next/router";
-import SimpleNavigation from "../SimpleNavigation";
 
 const defaultClass = Object.keys(wordClasses)[0] as keyof IWordClasses;
 
@@ -42,8 +31,8 @@ export function AddNewWordForm() {
   const { scrollIntoView, targetRef } = useScrollIntoView<HTMLDivElement>({
     offset: 5,
   });
-  // const [formatedExamples, setFormatedExamples] = useState([]);
   const formatedExamples = useRef<FromPTtoUM[]>([]);
+  const [loading, setLoading] = useState(false);
 
   const form = useForm({
     initialValues: {
@@ -93,8 +82,8 @@ export function AddNewWordForm() {
       author: cookies.name,
       date: new Date().toString(),
     };
-    resetNavigationProgress();
-    startNavigationProgress();
+
+    setLoading(true);
 
     try {
       await setWord(values);
@@ -121,7 +110,7 @@ export function AddNewWordForm() {
       console.log(e.message);
     }
 
-    setNavigationProgress(100);
+    setLoading(false);
     scrollIntoView();
   };
 
@@ -194,7 +183,9 @@ export function AddNewWordForm() {
           </Box>
 
           <Center>
-            <Button type="submit">Concluir</Button>
+            <Button type="submit" loading={loading}>
+              Concluir
+            </Button>
           </Center>
         </Stack>
       </Paper>
