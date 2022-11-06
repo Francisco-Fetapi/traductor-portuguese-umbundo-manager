@@ -5,5 +5,7 @@ interface StylesProps {
 }
 
 export const GlobalStyles = createGlobalStyle<StylesProps>`
-    
+    body{
+      display:grid;
+    }
 `;

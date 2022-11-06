@@ -81,7 +81,7 @@ export function TableContribuitions({ data }: TableContribuitionsProps) {
   });
 
   return (
-    <ScrollArea>
+    <ScrollArea sx={{ zoom: 0.85 }}>
       <Table verticalSpacing="xs">
         <thead>
           <tr>

@@ -50,6 +50,7 @@ export default function App(props: AppProps) {
           <DatabaseProvider>
             <RouterTransition />
             <SimpleNavigation />
+            <br />
             <AppProvider Page={<Component {...pageProps} />} />
           </DatabaseProvider>
         </ColorSchemeContainer>

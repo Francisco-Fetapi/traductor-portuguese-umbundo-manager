@@ -5,7 +5,7 @@ import React from "react";
 
 export default function SimpleNavigation() {
   return (
-    <Center my={5}>
+    <Center my={5} sx={{ zoom: 0.9 }}>
       <Breadcrumbs>
         <PageLink href="/">Nova Palavra</PageLink>
         <PageLink href="/lista-de-palavras">Lista de palavras</PageLink>
