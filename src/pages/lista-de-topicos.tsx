@@ -14,7 +14,7 @@ export default function TopcicListPage() {
       </Head>
       <NavigationProgress />
       <Center sx={{ minHeight: "100vh" }}>
-        <h1>Ola Mundo</h1>
+        <h1>Lista de Topicos</h1>
       </Center>
       <Footer />
     </>
