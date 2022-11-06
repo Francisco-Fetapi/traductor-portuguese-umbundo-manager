@@ -1,31 +1,8 @@
-import {
-  createStyles,
-  Table,
-  Anchor,
-  ScrollArea,
-  ActionIcon,
-} from "@mantine/core";
+import { Table, ScrollArea } from "@mantine/core";
 import useDatabase from "../hooks/useDatabase";
 import TableWordRow from "./TableWordRow";
 
-const useStyles = createStyles((theme) => ({
-  progressBar: {
-    "&:not(:first-of-type)": {
-      borderLeft: `3px solid ${
-        theme.colorScheme === "dark" ? theme.colors.dark[7] : theme.white
-      }`,
-    },
-  },
-  forTd: {
-    whiteSpace: "nowrap",
-    overflow: "hidden",
-    textOverflow: "ellipsis",
-    maxWidth: 180,
-  },
-}));
-
 export function TableWords() {
-  const { classes, theme } = useStyles();
   const { words, orderByWord } = useDatabase();
 
   const rows = orderByWord(words)?.map((word, position) => {
