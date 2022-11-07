@@ -1,6 +1,7 @@
 import { Group, Text, Accordion } from "@mantine/core";
 import { IConversation } from "../database/IConversation";
 import useDatabase from "../hooks/useDatabase";
+import React from "react";
 
 interface AccordionLabelProps extends IConversation {}
 
@@ -26,7 +27,21 @@ export default function TopicList() {
         <AccordionLabel {...conversation} />
       </Accordion.Control>
       <Accordion.Panel>
-        <Text size="sm">{conversation.phrases.join("")}</Text>
+        {conversation.phrases.map((phrase, key) => (
+          <div
+            style={{
+              marginBottom: 10,
+            }}
+            key={phrase.pt}
+          >
+            <Text size="sm">
+              {key + 1}. {phrase.pt}
+            </Text>
+            <Text size="xs" color="dimmed">
+              {phrase.pt}
+            </Text>
+          </div>
+        ))}
       </Accordion.Panel>
     </Accordion.Item>
   ));
