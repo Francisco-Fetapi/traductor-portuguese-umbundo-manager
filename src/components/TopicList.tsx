@@ -163,7 +163,7 @@ function FormConversation({ conversation }: FormConversationProps) {
   }
 
   function saveTopic() {
-    const slug = title.replaceAll(" ", "-").toLocaleLowerCase(); //uui, or another
+    const slug = title.replace(/\s/g, "-").toLocaleLowerCase(); //uui, or another
     const values = {
       topic: title,
       description,
