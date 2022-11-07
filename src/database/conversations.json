@@ -1,0 +1,32 @@
+[
+  {
+    "topic": "Saudação",
+    "description": "Uma pequena descricao do topico. Opcional",
+    "slug": "saudacao",
+    "phrases": [
+      {
+        "pt": "Frase em portugues 1",
+        "um": "Frase em umbundo 2"
+      },
+      {
+        "pt": "Frase em portugues 2",
+        "um": "Frase em umbundo 2"
+      }
+    ]
+  },
+  {
+    "topic": "Algum outro topico",
+    "description": "Uma pequena descricao do topico. Opcional",
+    "slug": "algum-outro-topico",
+    "phrases": [
+      {
+        "pt": "Frase em portugues 1",
+        "um": "Frase em umbundo 2"
+      },
+      {
+        "pt": "Frase em portugues 2",
+        "um": "Frase em umbundo 2"
+      }
+    ]
+  }
+]
