@@ -50,7 +50,6 @@ export function TableWords() {
           }}
         />
       </Box>
-      <br />
       <ScrollArea
         sx={{
           zoom: 0.85,

@@ -1,4 +1,11 @@
-import { Highlight, ActionIcon, createStyles, Box } from "@mantine/core";
+import {
+  Highlight,
+  Group,
+  Anchor,
+  ActionIcon,
+  createStyles,
+  Box,
+} from "@mantine/core";
 import React from "react";
 import { FromPTtoUM, IWord } from "../database/IWord";
 
@@ -9,6 +16,8 @@ import useModalOverlay from "../hooks/useModalOverlay";
 import FormWordFields from "./forms/FormWordFields";
 import sleep from "../helpers/sleep";
 import { parseCookies } from "nookies";
+import getWordClass from "../helpers/getWordClass";
+import dateDistance from "../helpers/dateDistance";
 
 function stringifyExamples(examples: FromPTtoUM[]): string {
   const parsed = examples.map((example) => {
@@ -38,7 +47,24 @@ const Word = {
   ViewDetails({ word }: HasWord) {
     return (
       <Box>
-        <Text size="sm">Mais detalhes</Text>
+        <Group
+          sx={{
+            justifyContent: "space-between",
+          }}
+        >
+          <Text size="md">{word.pt}</Text>
+          <Text size="xs" color="dimmed">
+            {getWordClass(word.class)}
+          </Text>
+        </Group>
+        <Text size="xs" color="dimmed">
+          {word.um}
+        </Text>
+        <br />
+        <Text size="xs" color="dimmed">
+          Adicionado <b>{dateDistance(new Date(word.date))}</b> por{" "}
+          <Anchor>{word.author}</Anchor>
+        </Text>
       </Box>
     );
   },
