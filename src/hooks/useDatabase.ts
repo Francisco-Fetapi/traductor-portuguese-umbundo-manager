@@ -4,7 +4,7 @@ import wordClasses from "../database/wordClasses.json";
 import dateDistance from "../helpers/dateDistance";
 
 export default function useDatabase() {
-  const { words } = useContext(DatabaseContext);
+  const { words, conversations } = useContext(DatabaseContext);
   const wordsLength = words?.length ?? 0;
 
   type IWords = typeof words;
@@ -19,6 +19,7 @@ export default function useDatabase() {
 
   const data = {
     words,
+    conversations,
     getClass(wordClass: keyof typeof wordClasses) {
       return wordClasses[wordClass];
     },
