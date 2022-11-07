@@ -13,6 +13,7 @@ import { IconDownload, IconSun, IconMoonStars } from "@tabler/icons";
 import LinkTradutorUmbundo from "./LinkTradutorUmbundo";
 import { openConfirmModal } from "@mantine/modals";
 import { useRef } from "react";
+import useModalOverlay from "../hooks/useModalOverlay";
 
 const useStyles = createStyles((theme) => ({
   footer: {
@@ -120,6 +121,7 @@ export function Footer() {
   const { classes } = useStyles();
   const { colorScheme, toggleColorScheme } = useMantineColorScheme();
   const linkDownloadRef = useRef<HTMLAnchorElement | null>(null);
+  const modalDefaultOptions = useModalOverlay();
 
   const openModalDowloadPDF = () =>
     openConfirmModal({
@@ -145,6 +147,7 @@ export function Footer() {
         console.log("Confirmed");
         linkDownloadRef.current?.click();
       },
+      ...modalDefaultOptions,
     });
 
   return (

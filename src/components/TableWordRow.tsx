@@ -5,6 +5,7 @@ import { FromPTtoUM, IWord } from "../database/IWord";
 import { Menu, Button, Text } from "@mantine/core";
 import { IconTrash, IconInfoCircle, IconPencil } from "@tabler/icons";
 import { openConfirmModal, openModal } from "@mantine/modals";
+import useModalOverlay from "../hooks/useModalOverlay";
 
 const useStyles = createStyles((theme) => ({
   forTd: {
@@ -21,16 +22,8 @@ interface TableTableRowProps {
 }
 
 export default function TableWordRow({ position, word }: TableTableRowProps) {
-  const { classes, theme } = useStyles();
-
-  const modalDefaultOptions = {
-    overlayColor:
-      theme.colorScheme === "dark"
-        ? theme.colors.dark[9]
-        : theme.colors.gray[2],
-    overlayOpacity: 0.55,
-    overlayBlur: 3,
-  };
+  const { classes } = useStyles();
+  const modalDefaultOptions = useModalOverlay();
 
   function openModalDelete() {
     openConfirmModal({
