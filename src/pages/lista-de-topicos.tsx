@@ -17,7 +17,7 @@ export default function TopcicListPage() {
       <Center>
         <h1>Lista de Topicos</h1>
       </Center>
-      <Center sx={{ minHeight: "50vh" }}>
+      <Center sx={{ padding: "10px 10px" }}>
         <TopicList />
       </Center>
       <Footer />

@@ -1,4 +1,4 @@
-import { Box, Table, ScrollArea, Input } from "@mantine/core";
+import { Text, Box, Table, ScrollArea, Input } from "@mantine/core";
 import { useDebouncedValue, useInputState } from "@mantine/hooks";
 import { IconSearch } from "@tabler/icons";
 import useDatabase from "../hooks/useDatabase";
@@ -55,17 +55,23 @@ export function TableWords() {
           zoom: 0.85,
         }}
       >
-        <Table verticalSpacing="xs">
-          <thead>
-            <tr>
-              <th></th>
-              <th>Português</th>
-              <th>Umbundo</th>
-              <th>Ações</th>
-            </tr>
-          </thead>
-          <tbody>{rows}</tbody>
-        </Table>
+        {(wordsFiltered?.length || 0) > 0 ? (
+          <Table verticalSpacing="xs">
+            <thead>
+              <tr>
+                <th></th>
+                <th>Português</th>
+                <th>Umbundo</th>
+                <th>Ações</th>
+              </tr>
+            </thead>
+            <tbody>{rows}</tbody>
+          </Table>
+        ) : (
+          <Text size="md" color="dimmed">
+            Nenhum resultado encontrado
+          </Text>
+        )}
       </ScrollArea>
     </div>
   );

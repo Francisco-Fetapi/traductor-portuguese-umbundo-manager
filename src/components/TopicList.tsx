@@ -38,7 +38,7 @@ export default function TopicList() {
               {key + 1}. {phrase.pt}
             </Text>
             <Text size="xs" color="dimmed">
-              {phrase.pt}
+              {phrase.um}
             </Text>
           </div>
         ))}
