@@ -10,6 +10,7 @@ import {
   DatabaseProviderProps,
   IWords,
 } from "./DatabaseProvider";
+import { parseWords } from "../helpers/parseWords";
 
 export const app = initializeApp(firebaseConfig);
 export const db = getFirestore(app);
@@ -28,7 +29,8 @@ export default function FireBaseProvider({ children }: DatabaseProviderProps) {
         return { ...doc.data() };
       });
       console.log(newWords);
-      setWords(newWords as IWords);
+      // setWords(newWords as IWords);
+      setWords(parseWords(newWords as IWords));
     }
   }, [fWords]);
 

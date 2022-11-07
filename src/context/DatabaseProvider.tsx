@@ -1,6 +1,7 @@
 import { createContext, useEffect, useState } from "react";
 import { FromPTtoUM, IWord } from "../database/IWord";
 import wordsJson from "../database/words.json";
+import { parseWords } from "../helpers/parseWords";
 
 export type IWords = IWord<FromPTtoUM[]>[];
 
@@ -19,7 +20,7 @@ export default function DatabaseProvider({ children }: DatabaseProviderProps) {
   const [words, setWords] = useState<IWords>([]);
 
   useEffect(() => {
-    setWords(wordsJson as IWords);
+    setWords(parseWords(wordsJson as IWords));
   }, []);
 
   return (

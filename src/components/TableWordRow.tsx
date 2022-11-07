@@ -8,6 +8,7 @@ import { openConfirmModal, openModal } from "@mantine/modals";
 import useModalOverlay from "../hooks/useModalOverlay";
 import FormWordFields from "./forms/FormWordFields";
 import sleep from "../helpers/sleep";
+import { parseCookies } from "nookies";
 
 function stringifyExamples(examples: FromPTtoUM[]): string {
   const parsed = examples.map((example) => {
@@ -63,6 +64,8 @@ interface TableTableRowProps extends HasWord {
 export default function TableWordRow({ position, word }: TableTableRowProps) {
   const { classes } = useStyles();
   const modalDefaultOptions = useModalOverlay();
+  const cookies = parseCookies();
+  const wasAddedByMe = cookies.name === word.author;
 
   function openModalDelete() {
     openConfirmModal({
@@ -104,17 +107,25 @@ export default function TableWordRow({ position, word }: TableTableRowProps) {
       <td>{position + 1}</td>
       <td className={classes.forTd}>{word.pt}</td>
       <td className={classes.forTd}>{word.um}</td>
-      <td>
-        <MenuRow
-          handleDelete={openModalDelete}
-          handleDetails={openModalMoreDetails}
-          handleEdit={openEditForm}
-        >
-          <ActionIcon>
-            <h4>. . .</h4>
+      {wasAddedByMe ? (
+        <td>
+          <MenuRow
+            handleDelete={openModalDelete}
+            handleDetails={openModalMoreDetails}
+            handleEdit={openEditForm}
+          >
+            <ActionIcon>
+              <h4>. . .</h4>
+            </ActionIcon>
+          </MenuRow>
+        </td>
+      ) : (
+        <td>
+          <ActionIcon onClick={openModalMoreDetails}>
+            <IconInfoCircle />
           </ActionIcon>
-        </MenuRow>
-      </td>
+        </td>
+      )}
     </tr>
   );
 }
