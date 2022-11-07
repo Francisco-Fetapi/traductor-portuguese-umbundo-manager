@@ -12,6 +12,7 @@ export default function useModalOverlay(responsive: boolean = false) {
     overlayOpacity: 0.55,
     overlayBlur: 3,
     fullScreen: responsive === true && isMobile,
+    overflow: "inside" as "outside" | "inside",
   };
 
   return modalDefaultOptions;

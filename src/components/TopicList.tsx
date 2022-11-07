@@ -1,5 +1,7 @@
 import {
   Button,
+  Tooltip,
+  ActionIcon,
   TextInput,
   Center,
   Box,
@@ -9,16 +11,17 @@ import {
 } from "@mantine/core";
 import { IConversation } from "../database/IConversation";
 import useDatabase from "../hooks/useDatabase";
-import React from "react";
+import React, { useState, useRef } from "react";
 import { openModal } from "@mantine/modals";
 import useModalOverlay from "../hooks/useModalOverlay";
+import { IconCheck, IconEdit } from "@tabler/icons";
+import { useInputState } from "@mantine/hooks";
 
 interface AccordionLabelProps extends IConversation {}
 
 function AccordionLabel({ topic, description }: AccordionLabelProps) {
   return (
     <Group noWrap>
-      {/* <Avatar src={image} radius="xl" size="lg" /> */}
       <div>
         <Text>{topic}</Text>
         <Text size="sm" color="dimmed" weight={400}>
@@ -53,6 +56,18 @@ export default function TopicList() {
             </Text>
           </div>
         ))}
+        <div
+          style={{
+            display: "flex",
+            justifyContent: "flex-end",
+          }}
+        >
+          <ActionIcon
+            onClick={() => handleOpenFormConversationEdit(conversation)}
+          >
+            <IconEdit size={16} />
+          </ActionIcon>
+        </div>
       </Accordion.Panel>
     </Accordion.Item>
   ));
@@ -62,6 +77,27 @@ export default function TopicList() {
       title: "Novo Tópico",
       children: <FormConversation />,
       ...modalProps,
+      styles(theme, params) {
+        return {
+          body: {
+            minHeight: "80vh",
+          },
+        };
+      },
+    });
+  }
+  function handleOpenFormConversationEdit(conversation: IConversation) {
+    openModal({
+      title: "Editar Tópico",
+      children: <FormConversation conversation={conversation} />,
+      ...modalProps,
+      styles(theme, params) {
+        return {
+          body: {
+            minHeight: "80vh",
+          },
+        };
+      },
     });
   }
 
@@ -81,8 +117,63 @@ export default function TopicList() {
 interface FormConversationProps {
   conversation?: IConversation;
 }
+interface Phrase {
+  pt: string;
+  um: string;
+}
 
 function FormConversation({ conversation }: FormConversationProps) {
+  const [title, handleTitle] = useInputState(conversation?.topic || "");
+  const [description, handleDescription] = useInputState(
+    conversation?.description || ""
+  );
+  const [forms, setForms] = useState<Phrase[]>(
+    conversation?.phrases || [
+      {
+        pt: "",
+        um: "",
+      },
+    ]
+  );
+  function AddMoreFields() {
+    setForms([...forms, { pt: "", um: "" }]);
+    console.log(forms);
+  }
+  const rightSection = (
+    <Tooltip label="Concluido" position="top-end" withArrow>
+      <ActionIcon onClick={AddMoreFields}>
+        <IconCheck size={16} />
+      </ActionIcon>
+    </Tooltip>
+  );
+
+  function handleChange(
+    e: React.ChangeEvent<HTMLInputElement>,
+    pos: number,
+    prop: keyof Phrase
+  ) {
+    setForms((prev) =>
+      prev.map((form, key) => {
+        if (key === pos) {
+          form[prop] = e.target.value;
+        }
+        return form;
+      })
+    );
+  }
+
+  function saveTopic() {
+    const slug = title.replaceAll(" ", "-").toLocaleLowerCase(); //uui, or another
+    const values = {
+      topic: title,
+      description,
+      slug,
+      phrases: forms,
+    };
+
+    console.log(values);
+  }
+
   return (
     <div
       style={{
@@ -91,8 +182,53 @@ function FormConversation({ conversation }: FormConversationProps) {
         rowGap: 12,
       }}
     >
-      <TextInput label="Titulo" />
-      <TextInput label="Descrição" />
+      <TextInput label="Titulo" onChange={handleTitle} value={title} />
+      <TextInput
+        label="Descrição"
+        onChange={handleDescription}
+        value={description}
+      />
+      <br />
+      <Text size="lg">Frases</Text>
+      {forms.map((form, key) => (
+        <form
+          onSubmit={(e) => {
+            e.preventDefault();
+            if (key === forms.length - 1) {
+              AddMoreFields();
+            }
+          }}
+          key={key}
+        >
+          <div
+            style={{
+              display: "grid",
+              gridTemplateColumns: "1fr 1fr",
+              gap: 10,
+            }}
+          >
+            <TextInput
+              value={form.pt}
+              onChange={(e) => handleChange(e, key, "pt")}
+              label="Português"
+            />
+            <TextInput
+              value={form.um}
+              onChange={(e) => handleChange(e, key, "um")}
+              label="Umbundo"
+              rightSection={
+                key === forms.length - 1 && form.pt && form.um
+                  ? rightSection
+                  : undefined
+              }
+            />
+          </div>
+        </form>
+      ))}
+      <br />
+      <Center>
+        <Button onClick={saveTopic}>Concluir</Button>
+      </Center>
     </div>
   );
 }
