@@ -20,12 +20,17 @@ interface TableTableRowProps {
   word: IWord<FromPTtoUM[]>;
 }
 
-// overlayColor={theme.colorScheme === 'dark' ? theme.colors.dark[9] : theme.colors.gray[2]}
-// overlayOpacity={0.55}
-// overlayBlur={3}
-
 export default function TableWordRow({ position, word }: TableTableRowProps) {
-  const { classes } = useStyles();
+  const { classes, theme } = useStyles();
+
+  const modalDefaultOptions = {
+    overlayColor:
+      theme.colorScheme === "dark"
+        ? theme.colors.dark[9]
+        : theme.colors.gray[2],
+    overlayOpacity: 0.55,
+    overlayBlur: 3,
+  };
 
   function openModalDelete() {
     openConfirmModal({
@@ -44,18 +49,21 @@ export default function TableWordRow({ position, word }: TableTableRowProps) {
       onConfirm: () => {
         console.log("Confirmed");
       },
+      ...modalDefaultOptions,
     });
   }
   function openModalMoreDetails() {
     openModal({
       title: "Detalhes",
       children: <Text size="sm">Mostrar mais detalhes</Text>,
+      ...modalDefaultOptions,
     });
   }
   function openEditForm() {
     openModal({
       title: "Editar",
       children: <Text size="sm">Formulario para editar a palavra</Text>,
+      ...modalDefaultOptions,
     });
   }
 
