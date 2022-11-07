@@ -22,6 +22,8 @@ import { useRef, useState } from "react";
 import { setWord } from "../../api-firebase";
 import { FromPTtoUM } from "../../database/IWord";
 import { parseCookies } from "nookies";
+import FormWordFields, { FormProps } from "./FormWordFields";
+import sleep from "../../helpers/sleep";
 
 const defaultClass = Object.keys(wordClasses)[0] as keyof IWordClasses;
 
@@ -31,62 +33,20 @@ export function AddNewWordForm() {
   const { scrollIntoView, targetRef } = useScrollIntoView<HTMLDivElement>({
     offset: 5,
   });
-  const formatedExamples = useRef<FromPTtoUM[]>([]);
-  const [loading, setLoading] = useState(false);
+  const initialValues = {
+    pt: "",
+    um: "",
+    class: defaultClass,
+    examples: "",
+  };
 
-  const form = useForm({
-    initialValues: {
-      pt: "",
-      um: "",
-      class: defaultClass,
-      examples: "",
-    },
-    validate: {
-      examples(examples) {
-        if (examples.trim().length === 0) {
-          return null;
-        }
-        const msgError = "O formato dos exemplos está incorreto.";
-        let listExamples = examples.split("\n");
-        listExamples = listExamples.filter((example) => {
-          return /\w+\s+-\s+\w\s*/.test(example);
-        });
-
-        if (listExamples.length === 0) {
-          return msgError;
-        }
-        const listExamplesPtUm = listExamples.map((example) => {
-          const [pt, um] = example.split(/\s+-\s+/);
-          return { pt, um };
-        });
-
-        let allRight = listExamplesPtUm.every((example) => {
-          return example.pt && example.um;
-        });
-        if (!allRight) {
-          return msgError;
-        }
-
-        formatedExamples.current = listExamplesPtUm;
-      },
-    },
-  });
-
-  const handleSubmit = async (formValues: typeof form.values) => {
-    const cookies = parseCookies();
-    const values = {
-      pt: formValues.pt.toLowerCase(),
-      um: formValues.um.toLowerCase(),
-      class: formValues.class,
-      examples: formatedExamples.current,
-      author: cookies.name,
-      date: new Date().toString(),
-    };
-
-    setLoading(true);
-
+  const onSubmit: FormProps["onSubmit"] = async (
+    values,
+    { formatedExamples, form }
+  ) => {
     try {
-      await setWord(values);
+      // await setWord(values);
+      await sleep(3);
 
       showNotification({
         title: "Cadastro feito com sucesso.",
@@ -109,8 +69,6 @@ export function AddNewWordForm() {
       });
       console.log(e.message);
     }
-
-    setLoading(false);
     scrollIntoView();
   };
 
@@ -118,77 +76,13 @@ export function AddNewWordForm() {
     <Stack my={50}>
       <FormHeader />
 
-      <Paper
-        component="form"
-        autoComplete="off"
-        withBorder
-        shadow="md"
-        p={30}
-        mt={30}
-        radius="md"
-        onSubmit={form.onSubmit(handleSubmit)}
-      >
-        <div ref={targetRef} />
-        <Stack style={{ flexDirection: "column" }}>
-          <Title
-            align="center"
-            sx={() => ({
-              fontWeight: 600,
-              fontSize: 25,
-            })}
-            mb="md"
-          >
-            CADASTRAR PALAVRA
-          </Title>
-          <TextInput
-            label="Palavra em português"
-            placeholder="Apenas uma palavra"
-            required
-            {...form.getInputProps("pt")}
-          />
-          <TextInput
-            label="Tradução para umbundo"
-            placeholder="Separe-as por virgulas se necessário"
-            {...form.getInputProps("um")}
-            required
-          />
-          <Select
-            style={{ zIndex: 2 }}
-            data={Object.keys(wordClasses)}
-            {...form.getInputProps("class")}
-            // placeholder="Escolha uma "
-            label="Selecione a classe desta palavra"
-            required
-          />
-          <Box px={4} mt={-10}>
-            <Text
-              sx={{
-                textTransform: "capitalize",
-              }}
-              size="sm"
-              weight={300}
-            >
-              {wordClasses[form.values.class]}
-            </Text>
-          </Box>
-
-          <Box>
-            <Textarea
-              minRows={8}
-              label="Exemplos"
-              placeholder={`Este campo não é obrigatório.\n\nCada exemplo deve estar no formato:\nFrase em portugues - Frase em Umbundo\nFrase em portugues - Frase em Umbundo\n\nNOTA: Os exemplos devem ser separados por quebras de linha. 
-              `}
-              {...form.getInputProps("examples")}
-            />
-          </Box>
-
-          <Center>
-            <Button type="submit" loading={loading}>
-              Concluir
-            </Button>
-          </Center>
-        </Stack>
-      </Paper>
+      <FormWordFields
+        formTitle="CADASTRAR PALAVRA"
+        initialValues={initialValues}
+        onSubmit={onSubmit}
+        targetRef={targetRef}
+        withPaperProps
+      />
     </Stack>
   );
 }

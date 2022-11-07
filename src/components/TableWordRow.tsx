@@ -6,12 +6,31 @@ import { Menu, Button, Text } from "@mantine/core";
 import { IconTrash, IconInfoCircle, IconPencil } from "@tabler/icons";
 import { openConfirmModal, openModal } from "@mantine/modals";
 import useModalOverlay from "../hooks/useModalOverlay";
+import FormWordFields from "./forms/FormWordFields";
+import sleep from "../helpers/sleep";
+
+function stringifyExamples(examples: FromPTtoUM[]): string {
+  const parsed = examples.map((example) => {
+    return `${example.pt} - ${example.um}`;
+  });
+  return parsed.join("\n");
+}
 
 const Word = {
   EditForm({ word }: HasWord) {
     return (
       <Box>
-        <Text size="sm">Formulario para editar a palavra</Text>
+        <FormWordFields
+          formTitle="EDITAR PALAVRA"
+          initialValues={{
+            ...word,
+            examples: stringifyExamples(word.examples),
+          }}
+          onSubmit={async (values, { formatedExamples, form }) => {
+            console.log(values);
+            await sleep(3);
+          }}
+        />
       </Box>
     );
   },
@@ -74,7 +93,7 @@ export default function TableWordRow({ position, word }: TableTableRowProps) {
   }
   function openEditForm() {
     openModal({
-      title: "Editar",
+      // title: "Editar",
       children: <Word.EditForm word={word} />,
       ...modalDefaultOptions,
     });
