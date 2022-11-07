@@ -1,4 +1,4 @@
-import { ActionIcon, createStyles } from "@mantine/core";
+import { ActionIcon, createStyles, Box } from "@mantine/core";
 import React from "react";
 import { FromPTtoUM, IWord } from "../database/IWord";
 
@@ -6,6 +6,23 @@ import { Menu, Button, Text } from "@mantine/core";
 import { IconTrash, IconInfoCircle, IconPencil } from "@tabler/icons";
 import { openConfirmModal, openModal } from "@mantine/modals";
 import useModalOverlay from "../hooks/useModalOverlay";
+
+const Word = {
+  EditForm({ word }: HasWord) {
+    return (
+      <Box>
+        <Text size="sm">Formulario para editar a palavra</Text>
+      </Box>
+    );
+  },
+  ViewDetails({ word }: HasWord) {
+    return (
+      <Box>
+        <Text size="sm">Mais detalhes</Text>
+      </Box>
+    );
+  },
+};
 
 const useStyles = createStyles((theme) => ({
   forTd: {
@@ -16,9 +33,12 @@ const useStyles = createStyles((theme) => ({
   },
 }));
 
-interface TableTableRowProps {
-  position: number;
+interface HasWord {
   word: IWord<FromPTtoUM[]>;
+}
+
+interface TableTableRowProps extends HasWord {
+  position: number;
 }
 
 export default function TableWordRow({ position, word }: TableTableRowProps) {
@@ -48,14 +68,14 @@ export default function TableWordRow({ position, word }: TableTableRowProps) {
   function openModalMoreDetails() {
     openModal({
       title: "Detalhes",
-      children: <Text size="sm">Mostrar mais detalhes</Text>,
+      children: <Word.ViewDetails word={word} />,
       ...modalDefaultOptions,
     });
   }
   function openEditForm() {
     openModal({
       title: "Editar",
-      children: <Text size="sm">Formulario para editar a palavra</Text>,
+      children: <Word.EditForm word={word} />,
       ...modalDefaultOptions,
     });
   }
