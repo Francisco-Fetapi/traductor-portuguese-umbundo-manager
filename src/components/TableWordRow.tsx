@@ -137,11 +137,15 @@ export default function TableWordRow({
   return (
     <tr key={word.pt}>
       <td>{position + 1}</td>
-      <td className={classes.forTd}>
-        <Highlight highlight={search}>{word.pt}</Highlight>
+      <td>
+        <Highlight className={classes.forTd} highlight={search}>
+          {word.pt}
+        </Highlight>
       </td>
-      <td className={classes.forTd}>
-        <Highlight highlight={search}>{word.um}</Highlight>
+      <td>
+        <Highlight className={classes.forTd} highlight={search}>
+          {word.um.split(",").slice(0, 2).join(",")}
+        </Highlight>
       </td>
       {wasAddedByMe ? (
         <td>

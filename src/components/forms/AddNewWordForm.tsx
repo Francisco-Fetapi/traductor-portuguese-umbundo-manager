@@ -1,29 +1,14 @@
-import {
-  TextInput,
-  Textarea,
-  Paper,
-  Title,
-  Text,
-  Button,
-  Box,
-  Center,
-  Stack,
-  Select,
-} from "@mantine/core";
+import { Title, Text, Box, Stack } from "@mantine/core";
 
-import { useForm } from "@mantine/form";
 import { IWordClasses } from "../../database/IWordClasses";
 import wordClasses from "../../database/wordClasses.json";
 import axios from "axios";
 import { showNotification } from "@mantine/notifications";
 import { useScrollIntoView } from "@mantine/hooks";
 import LinkTradutorUmbundo from "../LinkTradutorUmbundo";
-import { useRef, useState } from "react";
+
 import { setWord } from "../../api-firebase";
-import { FromPTtoUM } from "../../database/IWord";
-import { parseCookies } from "nookies";
 import FormWordFields, { FormProps } from "./FormWordFields";
-import sleep from "../../helpers/sleep";
 
 const defaultClass = Object.keys(wordClasses)[0] as keyof IWordClasses;
 
@@ -45,8 +30,8 @@ export function AddNewWordForm() {
     { formatedExamples, form }
   ) => {
     try {
-      // await setWord(values);
-      await sleep(3);
+      await setWord(values);
+      // await sleep(3);
 
       showNotification({
         title: "Cadastro feito com sucesso.",

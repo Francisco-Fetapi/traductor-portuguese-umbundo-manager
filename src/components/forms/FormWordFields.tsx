@@ -14,12 +14,7 @@ import {
 import { useForm, UseFormReturnType } from "@mantine/form";
 import { IWordClasses } from "../../database/IWordClasses";
 import wordClasses from "../../database/wordClasses.json";
-import axios from "axios";
-import { showNotification } from "@mantine/notifications";
-import { useScrollIntoView } from "@mantine/hooks";
-import LinkTradutorUmbundo from "../LinkTradutorUmbundo";
 import { useRef, useState } from "react";
-import { setWord } from "../../api-firebase";
 import { FromPTtoUM, IWord } from "../../database/IWord";
 import { parseCookies } from "nookies";
 
