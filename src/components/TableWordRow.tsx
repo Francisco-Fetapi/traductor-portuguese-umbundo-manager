@@ -1,4 +1,4 @@
-import { ActionIcon, createStyles, Box } from "@mantine/core";
+import { Highlight, ActionIcon, createStyles, Box } from "@mantine/core";
 import React from "react";
 import { FromPTtoUM, IWord } from "../database/IWord";
 
@@ -59,9 +59,14 @@ interface HasWord {
 
 interface TableTableRowProps extends HasWord {
   position: number;
+  search: string;
 }
 
-export default function TableWordRow({ position, word }: TableTableRowProps) {
+export default function TableWordRow({
+  position,
+  word,
+  search,
+}: TableTableRowProps) {
   const { classes } = useStyles();
   const modalDefaultOptions = useModalOverlay();
   const cookies = parseCookies();
@@ -105,8 +110,12 @@ export default function TableWordRow({ position, word }: TableTableRowProps) {
   return (
     <tr key={word.pt}>
       <td>{position + 1}</td>
-      <td className={classes.forTd}>{word.pt}</td>
-      <td className={classes.forTd}>{word.um}</td>
+      <td className={classes.forTd}>
+        <Highlight highlight={search}>{word.pt}</Highlight>
+      </td>
+      <td className={classes.forTd}>
+        <Highlight highlight={search}>{word.um}</Highlight>
+      </td>
       {wasAddedByMe ? (
         <td>
           <MenuRow
