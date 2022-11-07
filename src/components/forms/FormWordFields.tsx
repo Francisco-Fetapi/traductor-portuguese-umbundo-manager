@@ -104,7 +104,7 @@ export default function FormWordFields({
     setLoading(false);
   };
   const paperProps: any =
-    withPaperProps === true
+    withPaperProps == true
       ? {
           withBorder: true,
           shadow: "md",
@@ -179,6 +179,7 @@ export default function FormWordFields({
             Concluir
           </Button>
         </Center>
+        <br />
       </Stack>
     </Paper>
   );

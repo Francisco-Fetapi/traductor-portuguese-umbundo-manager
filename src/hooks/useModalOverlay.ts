@@ -1,7 +1,9 @@
 import { useMantineTheme } from "@mantine/core";
+import { useMediaQuery } from "@mantine/hooks";
 
-export default function useModalOverlay() {
+export default function useModalOverlay(responsive: boolean = false) {
   const theme = useMantineTheme();
+  const isMobile = useMediaQuery("(max-width: 500px)");
   const modalDefaultOptions = {
     overlayColor:
       theme.colorScheme === "dark"
@@ -9,6 +11,7 @@ export default function useModalOverlay() {
         : theme.colors.gray[2],
     overlayOpacity: 0.55,
     overlayBlur: 3,
+    fullScreen: responsive === true && isMobile,
   };
 
   return modalDefaultOptions;

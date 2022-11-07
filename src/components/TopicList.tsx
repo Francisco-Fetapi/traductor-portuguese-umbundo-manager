@@ -1,7 +1,17 @@
-import { Group, Text, Accordion } from "@mantine/core";
+import {
+  Button,
+  TextInput,
+  Center,
+  Box,
+  Group,
+  Text,
+  Accordion,
+} from "@mantine/core";
 import { IConversation } from "../database/IConversation";
 import useDatabase from "../hooks/useDatabase";
 import React from "react";
+import { openModal } from "@mantine/modals";
+import useModalOverlay from "../hooks/useModalOverlay";
 
 interface AccordionLabelProps extends IConversation {}
 
@@ -21,6 +31,7 @@ function AccordionLabel({ topic, description }: AccordionLabelProps) {
 
 export default function TopicList() {
   const { conversations } = useDatabase();
+  const modalProps = useModalOverlay(true);
   const items = conversations?.map((conversation) => (
     <Accordion.Item value={conversation.topic} key={conversation.topic}>
       <Accordion.Control>
@@ -46,13 +57,42 @@ export default function TopicList() {
     </Accordion.Item>
   ));
 
+  function handleOpenFormConversation() {
+    openModal({
+      title: "Novo Tópico",
+      children: <FormConversation />,
+      ...modalProps,
+    });
+  }
+
   return (
-    <Accordion
-      sx={{ width: "100%", maxWidth: 600, margin: "0 auto" }}
-      chevronPosition="right"
-      variant="contained"
+    <Box sx={{ width: "100%", maxWidth: 600, margin: "0 auto" }}>
+      <Accordion chevronPosition="right" variant="contained">
+        {items}
+      </Accordion>
+      <br />
+      <Center>
+        <Button onClick={handleOpenFormConversation}>Novo Tópico</Button>
+      </Center>
+    </Box>
+  );
+}
+
+interface FormConversationProps {
+  conversation?: IConversation;
+}
+
+function FormConversation({ conversation }: FormConversationProps) {
+  return (
+    <div
+      style={{
+        display: "grid",
+        gridTemplateColumns: "1fr",
+        rowGap: 12,
+      }}
     >
-      {items}
-    </Accordion>
+      <TextInput label="Titulo" />
+      <TextInput label="Descrição" />
+    </div>
   );
 }

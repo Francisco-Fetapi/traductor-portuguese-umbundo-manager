@@ -95,6 +95,7 @@ export default function TableWordRow({
 }: TableTableRowProps) {
   const { classes } = useStyles();
   const modalDefaultOptions = useModalOverlay();
+  const modalDefaultOptions2 = useModalOverlay(true);
   const cookies = parseCookies();
   const wasAddedByMe = cookies.name === word.author;
 
@@ -129,7 +130,7 @@ export default function TableWordRow({
     openModal({
       // title: "Editar",
       children: <Word.EditForm word={word} />,
-      ...modalDefaultOptions,
+      ...modalDefaultOptions2,
     });
   }
 
