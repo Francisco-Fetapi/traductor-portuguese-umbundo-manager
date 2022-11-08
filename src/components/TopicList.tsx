@@ -12,12 +12,12 @@ import {
 import { IConversation } from "../database/IConversation";
 import useDatabase from "../hooks/useDatabase";
 import React, { useState, useRef } from "react";
-import { closeAllModals, openModal } from "@mantine/modals";
+import { closeAllModals, openConfirmModal, openModal } from "@mantine/modals";
 import useModalOverlay from "../hooks/useModalOverlay";
-import { IconCheck, IconEdit } from "@tabler/icons";
+import { IconCheck, IconEdit, IconTrash } from "@tabler/icons";
 import { useInputState } from "@mantine/hooks";
 import { parseCookies } from "nookies";
-import { setConversation } from "../api-firebase";
+import { deleteConversation, setConversation } from "../api-firebase";
 import { showNotification } from "@mantine/notifications";
 
 interface AccordionLabelProps extends IConversation {}
@@ -35,45 +35,97 @@ function AccordionLabel({ topic, description }: AccordionLabelProps) {
   );
 }
 
+function handleDeleteConversation(conversation: IConversation) {
+  openConfirmModal({
+    title: (
+      <>
+        Apagar <b>&quot;{conversation.topic.trim()}&quot;</b>
+      </>
+    ),
+    children: (
+      <Text size="sm">
+        Você tem certeza que pretende apagar este tópico inteiro?
+      </Text>
+    ),
+    labels: { confirm: "Confirmar", cancel: "Cancelar" },
+    onCancel: () => console.log("Cancel"),
+    onConfirm: async () => {
+      try {
+        await deleteConversation(conversation.id!);
+        showNotification({
+          title: "Tópico apagado",
+          message: (
+            <>
+              O tópico <b>&quot;{conversation.topic.trim()}&quot;</b> foi
+              apagado com sucesso!
+            </>
+          ),
+          color: "green",
+        });
+      } catch (e: any) {
+        showNotification({
+          title: "Erro ao apagar",
+          message: e.message,
+          color: "red",
+        });
+      }
+    },
+    // ...modalDefaultOptions,
+  });
+}
+
 export default function TopicList() {
   const { conversations } = useDatabase();
   const modalProps = useModalOverlay(true);
-  const items = conversations?.map((conversation) => (
-    <Accordion.Item value={conversation.topic} key={conversation.topic}>
-      <Accordion.Control>
-        <AccordionLabel {...conversation} />
-      </Accordion.Control>
-      <Accordion.Panel>
-        {conversation.phrases.map((phrase, key) => (
-          <div
-            style={{
-              marginBottom: 10,
-            }}
-            key={phrase.pt}
-          >
-            <Text size="sm">
-              {key + 1}. {phrase.pt}
-            </Text>
-            <Text size="xs" color="dimmed">
-              {phrase.um}
-            </Text>
-          </div>
-        ))}
-        <div
-          style={{
-            display: "flex",
-            justifyContent: "flex-end",
-          }}
-        >
-          <ActionIcon
-            onClick={() => handleOpenFormConversationEdit(conversation)}
-          >
-            <IconEdit size={16} />
-          </ActionIcon>
-        </div>
-      </Accordion.Panel>
-    </Accordion.Item>
-  ));
+  const cookies = parseCookies();
+
+  const items = conversations?.map((conversation) => {
+    const isMine = cookies.name === conversation.author;
+
+    return (
+      <Accordion.Item value={conversation.topic} key={conversation.topic}>
+        <Accordion.Control>
+          <AccordionLabel {...conversation} />
+        </Accordion.Control>
+        <Accordion.Panel>
+          {conversation.phrases.map((phrase, key) => (
+            <div
+              style={{
+                marginBottom: 10,
+              }}
+              key={phrase.pt}
+            >
+              <Text size="sm">
+                {key + 1}. {phrase.pt}
+              </Text>
+              <Text size="xs" color="dimmed">
+                {phrase.um}
+              </Text>
+            </div>
+          ))}
+          {isMine && (
+            <div
+              style={{
+                display: "flex",
+                justifyContent: "flex-end",
+              }}
+            >
+              <ActionIcon
+                onClick={() => handleOpenFormConversationEdit(conversation)}
+              >
+                <IconEdit size={16} />
+              </ActionIcon>
+              <ActionIcon
+                onClick={() => handleDeleteConversation(conversation)}
+              >
+                <IconTrash size={16} />
+              </ActionIcon>
+            </div>
+          )}
+        </Accordion.Panel>
+      </Accordion.Item>
+    );
+  });
 
   function handleOpenFormConversation() {
     openModal({

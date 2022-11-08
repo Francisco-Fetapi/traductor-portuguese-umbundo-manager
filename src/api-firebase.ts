@@ -86,3 +86,14 @@ export async function setConversation(conversation: IConversation) {
   console.log("updated");
   // throw new Error("A palavra que está tentando cadastrar já existe!");
 }
+
+export async function deleteConversation(id: string) {
+  const docRef = doc(db, "conversations", id);
+  try {
+    await deleteDoc(docRef);
+  } catch (e: any) {
+    return new Error(
+      "Erro ao apagar este tópico. Ele pode já ter sido apagada antes, ou sua conexão com a internet falhou."
+    );
+  }
+}
