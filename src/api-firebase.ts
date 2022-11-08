@@ -11,6 +11,7 @@ import {
   deleteDoc,
   updateDoc,
 } from "firebase/firestore";
+import { IConversation } from "./database/IConversation";
 import { FromPTtoUM, IWord } from "./database/IWord";
 
 import firebaseConfig from "./firebase.json";
@@ -63,4 +64,25 @@ export async function updateWord(id: string, data: any) {
       "Erro ao editar esta palavra. Ela pode já ter sido apagada antes, ou sua conexão com a internet falhou."
     );
   }
+}
+
+export async function setConversation(conversation: IConversation) {
+  const conversationsCollection = collection(db, "conversations");
+
+  const conversationsRef = doc(conversationsCollection);
+
+  let getSameConversation = query(
+    conversationsCollection,
+    where("topic", "==", conversation.topic)
+  );
+  const querySnapshot = await getDocs(getSameConversation);
+
+  if (querySnapshot.size == 0) {
+    return await setDoc(conversationsRef, conversation);
+  }
+  const docRef = doc(db, "conversations", conversation.id!);
+  // delete conversation.id;
+  await updateDoc(docRef, conversation);
+  console.log("updated");
+  // throw new Error("A palavra que está tentando cadastrar já existe!");
 }

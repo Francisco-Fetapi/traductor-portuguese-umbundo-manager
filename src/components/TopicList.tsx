@@ -12,10 +12,13 @@ import {
 import { IConversation } from "../database/IConversation";
 import useDatabase from "../hooks/useDatabase";
 import React, { useState, useRef } from "react";
-import { openModal } from "@mantine/modals";
+import { closeAllModals, openModal } from "@mantine/modals";
 import useModalOverlay from "../hooks/useModalOverlay";
 import { IconCheck, IconEdit } from "@tabler/icons";
 import { useInputState } from "@mantine/hooks";
+import { parseCookies } from "nookies";
+import { setConversation } from "../api-firebase";
+import { showNotification } from "@mantine/notifications";
 
 interface AccordionLabelProps extends IConversation {}
 
@@ -135,6 +138,7 @@ function FormConversation({ conversation }: FormConversationProps) {
       },
     ]
   );
+  const cookies = parseCookies();
   function AddMoreFields() {
     setForms([...forms, { pt: "", um: "" }]);
     console.log(forms);
@@ -162,15 +166,30 @@ function FormConversation({ conversation }: FormConversationProps) {
     );
   }
 
-  function saveTopic() {
-    const slug = title.replace(/\s/g, "-").toLocaleLowerCase(); //uui, or another
-    const values = {
+  async function saveTopic() {
+    const slug = title.replace(/\s/g, "-").toLowerCase(); //uui, or another
+    const values: IConversation = {
       topic: title,
       description,
       slug,
       phrases: forms,
+      author: cookies.name,
+      date: new Date().toString(),
     };
 
+    if (conversation) {
+      values.id = conversation.id;
+    }
+
+    try {
+      await setConversation(values);
+      closeAllModals();
+    } catch (e: any) {
+      showNotification({
+        title: "Erro ao adicionar Tópico",
+        message: "Houve um erro ao tentar adicionar um novo tópico.",
+      });
+    }
     console.log(values);
   }
 

@@ -23,6 +23,8 @@ export default function FireBaseProvider({ children }: DatabaseProviderProps) {
     collection(db, "words"),
     {}
   );
+  const [fConversations, fConversationsLoading, fConversationsError] =
+    useCollection(collection(db, "conversations"), {});
 
   useEffect(() => {
     if (!fwordsLoading && fWords) {
@@ -34,6 +36,16 @@ export default function FireBaseProvider({ children }: DatabaseProviderProps) {
       setWords(parseWords(newWords as IWords));
     }
   }, [fWords]);
+
+  useEffect(() => {
+    if (!fConversationsLoading && fConversations) {
+      const newConversations = fConversations.docs.map((doc) => {
+        return { ...doc.data(), id: doc.id } as IConversation;
+      });
+      console.log("conversations", newConversations);
+      setConversations(newConversations);
+    }
+  }, [fConversations]);
 
   return (
     <DatabaseContext.Provider value={{ words, conversations }}>
