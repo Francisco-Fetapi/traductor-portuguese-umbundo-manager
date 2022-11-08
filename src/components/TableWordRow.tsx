@@ -18,6 +18,8 @@ import sleep from "../helpers/sleep";
 import { parseCookies } from "nookies";
 import getWordClass from "../helpers/getWordClass";
 import dateDistance from "../helpers/dateDistance";
+import { deleteWord } from "../api-firebase";
+import { showNotification } from "@mantine/notifications";
 
 function stringifyExamples(examples: FromPTtoUM[]): string {
   const parsed = examples.map((example) => {
@@ -113,9 +115,28 @@ export default function TableWordRow({
       ),
       labels: { confirm: "Confirmar", cancel: "Cancelar" },
       onCancel: () => console.log("Cancel"),
-      onConfirm: () => {
+      onConfirm: async () => {
         console.log("Confirmed");
         console.log("id", word.id);
+        try {
+          await deleteWord(word.id);
+          showNotification({
+            title: "Palavra apagada",
+            message: (
+              <>
+                A palavra <b>&quot;{word.pt.trim()}&quot;</b> foi apagada com
+                sucesso!
+              </>
+            ),
+            color: "green",
+          });
+        } catch (e: any) {
+          showNotification({
+            title: "Erro ao apagar",
+            message: e.message,
+            color: "red",
+          });
+        }
       },
       ...modalDefaultOptions,
     });

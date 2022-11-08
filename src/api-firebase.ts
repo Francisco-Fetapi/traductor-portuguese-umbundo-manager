@@ -8,6 +8,7 @@ import {
   setDoc,
   query,
   where,
+  deleteDoc,
 } from "firebase/firestore";
 import { FromPTtoUM, IWord } from "./database/IWord";
 
@@ -35,4 +36,16 @@ export async function setWord(word: IWord<FromPTtoUM[]>) {
   }
 
   throw new Error("A palavra que está tentando cadastrar já existe!");
+}
+
+export async function deleteWord(id: string) {
+  // const wordsCollection = collection(db, "words");
+  const docRef = doc(db, "words", id);
+  try {
+    await deleteDoc(docRef);
+  } catch (e: any) {
+    return new Error(
+      "Erro ao apagar esta palavra. Ela pode já ter sido apagada antes, ou sua conexão com a internet falhou."
+    );
+  }
 }
