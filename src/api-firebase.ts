@@ -9,6 +9,7 @@ import {
   query,
   where,
   deleteDoc,
+  updateDoc,
 } from "firebase/firestore";
 import { FromPTtoUM, IWord } from "./database/IWord";
 
@@ -46,6 +47,20 @@ export async function deleteWord(id: string) {
   } catch (e: any) {
     return new Error(
       "Erro ao apagar esta palavra. Ela pode já ter sido apagada antes, ou sua conexão com a internet falhou."
+    );
+  }
+}
+export async function updateWord(id: string, data: any) {
+  // const wordsCollection = collection(db, "words");
+  const docRef = doc(db, "words", id);
+  console.log(docRef);
+  try {
+    delete data.id;
+    console.log(data);
+    await updateDoc(docRef, data);
+  } catch (e: any) {
+    return new Error(
+      "Erro ao editar esta palavra. Ela pode já ter sido apagada antes, ou sua conexão com a internet falhou."
     );
   }
 }

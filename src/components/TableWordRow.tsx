@@ -11,14 +11,14 @@ import { FromPTtoUM, IWord } from "../database/IWord";
 
 import { Menu, Button, Text } from "@mantine/core";
 import { IconTrash, IconInfoCircle, IconPencil } from "@tabler/icons";
-import { openConfirmModal, openModal } from "@mantine/modals";
+import { openConfirmModal, openModal, closeAllModals } from "@mantine/modals";
 import useModalOverlay from "../hooks/useModalOverlay";
 import FormWordFields from "./forms/FormWordFields";
 import sleep from "../helpers/sleep";
 import { parseCookies } from "nookies";
 import getWordClass from "../helpers/getWordClass";
 import dateDistance from "../helpers/dateDistance";
-import { deleteWord } from "../api-firebase";
+import { deleteWord, updateWord } from "../api-firebase";
 import { showNotification } from "@mantine/notifications";
 
 function stringifyExamples(examples: FromPTtoUM[]): string {
@@ -39,8 +39,8 @@ const Word = {
             examples: stringifyExamples(word.examples),
           }}
           onSubmit={async (values, { formatedExamples, form }) => {
-            console.log(values);
-            await sleep(3);
+            await updateWord(word.id!, values);
+            closeAllModals();
           }}
         />
       </Box>
@@ -119,7 +119,7 @@ export default function TableWordRow({
         console.log("Confirmed");
         console.log("id", word.id);
         try {
-          await deleteWord(word.id);
+          await deleteWord(word.id!);
           showNotification({
             title: "Palavra apagada",
             message: (
