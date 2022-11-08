@@ -25,7 +25,8 @@ const databases = {
 };
 
 const environment = process.env.NODE_ENV;
-const DatabaseProvider = databases[environment];
+// const DatabaseProvider = databases[environment];
+const DatabaseProvider = FirebaseProvider;
 
 export default function App(props: AppProps) {
   const { Component, pageProps } = props;

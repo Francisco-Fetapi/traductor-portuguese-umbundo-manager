@@ -6,6 +6,7 @@ export interface FromPTtoUM {
 }
 
 export interface IWord<T = string> extends FromPTtoUM {
+  id: string;
   class: keyof IWordClasses;
   examples: T;
   author: string;

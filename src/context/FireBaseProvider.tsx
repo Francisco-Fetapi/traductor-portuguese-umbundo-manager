@@ -27,7 +27,7 @@ export default function FireBaseProvider({ children }: DatabaseProviderProps) {
   useEffect(() => {
     if (!fwordsLoading && fWords) {
       const newWords = fWords.docs.map((doc) => {
-        return { ...doc.data() };
+        return { ...doc.data(), id: doc.id };
       });
       console.log(newWords);
       // setWords(newWords as IWords);

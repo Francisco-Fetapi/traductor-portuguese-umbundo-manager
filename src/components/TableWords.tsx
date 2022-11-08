@@ -14,7 +14,7 @@ export function TableWords() {
     return words?.filter((word) => {
       return word.pt.includes(search) || word.um.includes(search);
     });
-  }, [searchDebounced]);
+  }, [searchDebounced, words]);
 
   const rows = useMemo(() => {
     return orderByWord(wordsFiltered)?.map((word, position) => {

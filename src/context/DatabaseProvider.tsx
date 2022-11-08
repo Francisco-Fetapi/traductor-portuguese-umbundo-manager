@@ -4,6 +4,7 @@ import { FromPTtoUM, IWord } from "../database/IWord";
 import wordsJson from "../database/words.json";
 import conversationsJson from "../database/conversations.json";
 import { parseWords } from "../helpers/parseWords";
+import { v4 } from "uuid";
 
 export type IWords = IWord<FromPTtoUM[]>[];
 
@@ -23,7 +24,10 @@ export default function DatabaseProvider({ children }: DatabaseProviderProps) {
   const [conversations, setConversations] = useState<IConversation[]>([]);
 
   useEffect(() => {
-    setWords(parseWords(wordsJson as IWords));
+    const wordsJsonWithId = wordsJson.map((word) => {
+      return { ...word, id: v4() };
+    });
+    setWords(parseWords(wordsJsonWithId as IWords));
   }, []);
   useEffect(() => {
     setConversations(conversationsJson);

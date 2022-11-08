@@ -115,6 +115,7 @@ export default function TableWordRow({
       onCancel: () => console.log("Cancel"),
       onConfirm: () => {
         console.log("Confirmed");
+        console.log("id", word.id);
       },
       ...modalDefaultOptions,
     });
