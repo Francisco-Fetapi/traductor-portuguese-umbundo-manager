@@ -5,7 +5,12 @@ import {
 } from "@reduxjs/toolkit";
 import useStatePersist from "../hooks/useStatePersist";
 import { stateReseted } from "./utils";
-import { initialState, THEME_KEY_IN_LOCALSTORAGE, App } from "./App.store";
+import {
+  initialState,
+  THEME_KEY_IN_LOCALSTORAGE,
+  App,
+  ITEMS_PER_PAGE,
+} from "./App.store";
 
 export const reducers: ValidateSliceCaseReducers<
   App,
@@ -29,5 +34,8 @@ export const reducers: ValidateSliceCaseReducers<
       return;
     }
     Object.assign(state, stateReseted(initialState));
+  },
+  showMoreItems(state) {
+    state.showItems += ITEMS_PER_PAGE;
   },
 };

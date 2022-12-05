@@ -6,11 +6,14 @@ export const THEME_KEY_IN_LOCALSTORAGE = "darkMode";
 
 export interface IDarkMode {
   darkMode: boolean;
+  showItems: number;
 }
 export interface App extends IDarkMode {}
+export const ITEMS_PER_PAGE = 10;
 
 export const initialState: App = {
   darkMode: false,
+  showItems: ITEMS_PER_PAGE,
 };
 
 export function sliceCreator(initialState: App) {
@@ -39,7 +42,8 @@ export const store = configureStore({
 
 export default store;
 
-export const { toggleTheme, resetAllState, setTheme } = app.actions;
+export const { toggleTheme, resetAllState, setTheme, showMoreItems } =
+  app.actions;
 
 export type RootState = ReturnType<typeof store.getState>;
 export type AppDispatch = typeof store.dispatch;
