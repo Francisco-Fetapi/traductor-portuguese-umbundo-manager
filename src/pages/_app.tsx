@@ -11,12 +11,13 @@ import {
   THEME_KEY_IN_LOCALSTORAGE,
   toggleTheme,
 } from "../store/App.store";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import useStatePersist from "../hooks/useStatePersist";
 import LocalDatabaseProvider from "../context/DatabaseProvider";
 import FirebaseProvider from "../context/FireBaseProvider";
 import SimpleNavigation from "../components/SimpleNavigation";
 import { RouterTransition } from "../components/RouterTransition";
+import nookies, { setCookie } from "nookies";
 
 const databases = {
   development: LocalDatabaseProvider,
@@ -25,11 +26,24 @@ const databases = {
 };
 
 const environment = process.env.NODE_ENV;
-// const DatabaseProvider = databases[environment];
-const DatabaseProvider = FirebaseProvider;
+const DatabaseProvider = databases[environment];
+// const DatabaseProvider = FirebaseProvider;
 
-export default function App(props: AppProps) {
+type IColorScheme = "light" | "dark";
+const THEME_COOKIE = "theme_mantine_dictionary";
+
+export default function App(props: AppProps & { colorScheme: IColorScheme }) {
   const { Component, pageProps } = props;
+  const [colorScheme, setColorScheme] = useState(props.colorScheme);
+
+  function toggleColorScheme(color: IColorScheme) {
+    const nextColor = color || (colorScheme === "dark" ? "light" : "dark");
+    setColorScheme(nextColor);
+    setCookie(null, THEME_COOKIE, nextColor, {
+      maxAge: 60 * 60 * 24 * 31,
+      path: "/",
+    });
+  }
 
   return (
     <>
@@ -47,38 +61,25 @@ export default function App(props: AppProps) {
       </Head>
 
       <AppStore>
-        <ColorSchemeContainer>
+        <ColorSchemeProvider
+          colorScheme={colorScheme}
+          toggleColorScheme={toggleColorScheme}
+        >
           <DatabaseProvider>
             <RouterTransition />
             <SimpleNavigation />
             <br />
             <AppProvider Page={<Component {...pageProps} />} />
           </DatabaseProvider>
-        </ColorSchemeContainer>
+        </ColorSchemeProvider>
       </AppStore>
     </>
   );
 }
 
-function ColorSchemeContainer({ children }: { children: React.ReactNode }) {
-  const darkMode = useSelector(selectTheme);
-  const dispatch = useDispatch();
-  const themeLocal = useStatePersist<boolean>(THEME_KEY_IN_LOCALSTORAGE);
-
-  const toggleColorScheme = (value?: ColorScheme) => {
-    dispatch(toggleTheme(null));
+App.getInitialProps = ({ ctx }: { ctx: any }) => {
+  const cookies = nookies.get(ctx);
+  return {
+    colorScheme: cookies[THEME_COOKIE] || "light",
   };
-
-  useEffect(() => {
-    dispatch(setTheme(themeLocal.get()));
-  }, []);
-
-  return (
-    <ColorSchemeProvider
-      colorScheme={darkMode ? "dark" : "light"}
-      toggleColorScheme={toggleColorScheme}
-    >
-      {children}
-    </ColorSchemeProvider>
-  );
-}
+};

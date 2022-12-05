@@ -5,6 +5,7 @@ import useDatabase from "../hooks/useDatabase";
 import TableWordRow from "./TableWordRow";
 import { useMemo } from "react";
 
+// load more on scroll
 export function TableWords() {
   const { words, orderByWord } = useDatabase();
   const [search, handleSearch] = useInputState("");
