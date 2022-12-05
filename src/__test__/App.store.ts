@@ -3,6 +3,7 @@ import { App, middlewares, sliceCreator } from "../store/App.store";
 
 const initialState: App = {
   darkMode: false,
+  showItems:10
 };
 
 const app = sliceCreator(initialState);
