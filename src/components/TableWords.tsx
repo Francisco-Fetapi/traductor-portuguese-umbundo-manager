@@ -91,8 +91,8 @@ export function TableWords() {
             <tbody>{rows}</tbody>
           </Table>
         ) : (
-          <Text size="md" color="dimmed">
-            Nenhum resultado encontrado
+          <Text size="md" color="dimmed" align="center">
+            Carregando...
           </Text>
         )}
       </ScrollArea>
