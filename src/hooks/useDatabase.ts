@@ -10,7 +10,9 @@ export default function useDatabase() {
   type IWords = typeof words;
 
   function getWordsByAuthor(author: string) {
-    const wordsByAuthor = words?.filter((word) => word.author === author);
+    const wordsByAuthor = words?.filter(
+      (word) => word.author.trim() === author.trim()
+    );
     if (!wordsByAuthor) {
       return null;
     }
@@ -26,8 +28,8 @@ export default function useDatabase() {
     getAuthors() {
       const authors: string[] = [];
       data.orderByDate(words)?.forEach((word) => {
-        if (!authors.includes(word.author)) {
-          authors.push(word.author);
+        if (!authors.includes(word.author.trim())) {
+          authors.push(word.author.trim());
         }
       });
 
