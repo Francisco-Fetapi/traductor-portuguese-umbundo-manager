@@ -66,6 +66,12 @@ export async function updateWord(id: string, data: any) {
   }
 }
 
+export async function getConversations() {
+  const wordsSnapshot = await getDocs(collection(db, "conversations"));
+  const wordsList = wordsSnapshot.docs.map((doc) => doc.data());
+  return wordsList;
+}
+
 export async function setConversation(conversation: IConversation) {
   const conversationsCollection = collection(db, "conversations");
 
