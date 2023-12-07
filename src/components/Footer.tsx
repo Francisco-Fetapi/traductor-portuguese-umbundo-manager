@@ -150,6 +150,8 @@ export function Footer() {
       ...modalDefaultOptions,
     });
 
+  const currentYear = new Date().getFullYear();
+
   return (
     <footer className={classes.footer}>
       <Center
@@ -174,7 +176,7 @@ export function Footer() {
 
       <Container className={classes.afterFooter}>
         <Text color="dimmed" size="sm">
-          © 2022 Todos os direitos reservados.
+          © {currentYear} Todos os direitos reservados.
         </Text>
         <Group spacing={12} className={classes.social} position="right" noWrap>
           <Tooltip label="Alterar tema">
