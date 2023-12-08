@@ -33,7 +33,7 @@ export function SignInForm() {
           return "Insira apenas o primeiro e último nome.";
       },
       token(token) {
-        if (token !== "bad-b") {
+        if (token !== "3844") {
           return "Token incorreto. Você não pode acessar o sistema sem o token correto.";
         }
       },
