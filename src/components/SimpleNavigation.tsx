@@ -9,7 +9,7 @@ export default function SimpleNavigation() {
     { url: "/", label: "Nova Palavra" },
     { url: "/lista-de-palavras", label: "Lista de Palavras" },
     { url: "/lista-de-topicos", label: "Lista de Topicos" },
-    // { url: "/contribuidores", label: "Contribuidores" },
+    { url: "/contribuidores", label: "Contribuidores" },
   ];
   return (
     <Center my={5} sx={{ zoom: 0.9 }}>
